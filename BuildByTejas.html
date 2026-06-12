@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BuildByTejas — Premium Web Design & Development | Tejas Rathi</title>
+<meta name="description" content="BuildByTejas is the studio of Tejas Rathi — designing and building premium websites that help businesses stand out, attract customers, and grow online." />
+<meta name="author" content="Tejas Rathi" />
+<meta name="theme-color" content="#050507" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BuildByTejas — Websites Worth Remembering" />
+<meta property="og:description" content="Premium web design & development by Tejas Rathi. Building digital experiences that convert." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* ============ Design system ============ */
+:root{
+  --ink:#050507; --ink2:#0b0b12; --ink3:#11111c;
+  --line:rgba(255,255,255,.08);
+  --primary:#7c5cff; --cyan:#22d3ee; --pink:#f472b6; --mist:#a3a3b8;
+  --disp:'Sora',ui-sans-serif,system-ui,sans-serif;
+  --body:'Inter',ui-sans-serif,system-ui,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:#f5f5f7;font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:rgba(124,92,255,.4);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#050507}
+::-webkit-scrollbar-thumb{background:#232333;border-radius:99px;border:2px solid #050507}
+::-webkit-scrollbar-thumb:hover{background:var(--primary)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+@media(pointer:fine){body,a,button{cursor:none}}
+
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:24px}
+@media(min-width:768px){.wrap{padding-inline:40px}}
+.section{padding-block:clamp(96px,11vw,168px);position:relative}
+
+.glass{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.glass-strong{background:rgba(11,11,18,.72);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.card{border-radius:18px;padding:28px;transition:transform .5s var(--ease),border-color .5s,background-color .5s,box-shadow .5s}
+.card:hover{border-color:rgba(124,92,255,.45);background-color:rgba(124,92,255,.06);box-shadow:0 24px 80px -24px rgba(124,92,255,.35),inset 0 1px 0 rgba(255,255,255,.08);transform:translateY(-6px)}
+
+.text-grad{background:linear-gradient(110deg,#fff 20%,#b7a6ff 50%,#67e8f9 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.text-outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.16)}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400}
+.mist{color:var(--mist)}
+.h1{font-family:var(--disp);font-weight:700;letter-spacing:-.03em;line-height:1.02}
+.h2{font-family:var(--disp);font-size:clamp(32px,4.6vw,56px);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+.eyebrow::before{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--primary),var(--cyan))}
+.badge{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:99px;padding:5px 14px;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 13px;font-size:11px;color:var(--mist)}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:15px;border-radius:999px;padding:16px 32px;transition:transform .4s var(--ease),box-shadow .4s,background-color .4s,border-color .4s;white-space:nowrap}
+.btn-primary{color:#0b0b12;background:linear-gradient(110deg,#fff,#e8e3ff);box-shadow:0 8px 40px -10px rgba(124,92,255,.55)}
+.btn-primary:hover{box-shadow:0 14px 60px -10px rgba(124,92,255,.8)}
+.btn-ghost{color:#f5f5f7;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:rgba(124,92,255,.6);background:rgba(124,92,255,.08)}
+
+/* aurora */
+.aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:9999px;filter:blur(90px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(6%,-8%,0) scale(1.15)}100%{transform:translate3d(-5%,6%,0) scale(.95)}}
+
+/* grain */
+body::after{content:"";position:fixed;inset:-100%;z-index:95;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* preloader */
+#preloader{position:fixed;inset:0;z-index:150;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.76,0,.24,1)}
+#preloader.done{transform:translateY(-100%)}
+#preloader .brand{font-family:var(--disp);font-size:clamp(28px,5vw,56px);font-weight:700;letter-spacing:-.02em}
+#preloader .sub{margin-top:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist)}
+#preloader .meter{position:absolute;bottom:40px;left:32px;right:32px;display:flex;align-items:flex-end;justify-content:space-between}
+#preloader .bar{height:1px;width:40%;max-width:320px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+#preloader .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--cyan))}
+#preloader .pct{font-family:var(--disp);font-size:clamp(48px,8vw,90px);font-weight:700;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.9)}
+#preloader .pct small{font-size:.35em;color:var(--mist)}
+
+/* cursor */
+.cdot,.cring{position:fixed;top:0;left:0;z-index:200;pointer-events:none;border-radius:9999px;display:none}
+@media(pointer:fine){.cdot,.cring{display:block}}
+.cdot{width:6px;height:6px;background:#fff;mix-blend-mode:difference}
+.cring{width:38px;height:38px;border:1px solid rgba(255,255,255,.35);transition:width .3s,height .3s,border-color .3s,background-color .3s}
+.cring.active{width:64px;height:64px;border-color:rgba(124,92,255,.9);background:rgba(124,92,255,.12)}
+.cring.label{width:88px;height:88px;background:rgba(255,255,255,.95);border-color:transparent}
+.cring .ctext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0b0b12;opacity:0;transition:opacity .2s}
+.cring.label .ctext{opacity:1}
+
+/* progress bar */
+#progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:120;background:linear-gradient(90deg,var(--primary),var(--pink),var(--cyan));transform:scaleX(0);transform-origin:left}
+
+/* nav */
+#nav{position:fixed;left:0;right:0;top:0;z-index:110;padding-block:20px;transition:padding .5s}
+#nav.scrolled{padding-block:12px}
+#nav .inner{display:flex;align-items:center;justify-content:space-between;border-radius:16px;padding:12px 20px;transition:all .5s}
+#nav.scrolled .inner{background:rgba(11,11,18,.72);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(24px);box-shadow:0 12px 48px -12px rgba(0,0,0,.6)}
+#nav .logo{font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:-.02em}
+#nav ul{display:flex;gap:32px;list-style:none}
+#nav ul a{position:relative;font-size:14px;font-weight:500;color:var(--mist);transition:color .3s}
+#nav ul a:hover{color:#fff}
+#nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:linear-gradient(90deg,var(--primary),var(--cyan));transition:width .4s}
+#nav ul a:hover::after{width:100%}
+#nav .cta{padding:10px 24px;font-size:14px}
+.burger{display:none;position:relative;z-index:130;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{display:block;width:24px;height:1px;background:#fff;transition:transform .3s}
+.burger.open span:first-child{transform:translateY(3px) rotate(45deg)}
+.burger.open span:last-child{transform:translateY(-3px) rotate(-45deg)}
+@media(max-width:860px){#nav ul,#nav .cta{display:none}.burger{display:flex}}
+#mobileMenu{position:fixed;inset:0;z-index:120;background:rgba(11,11,18,.96);backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;padding:0 32px;clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.76,0,.24,1);visibility:hidden}
+#mobileMenu.open{clip-path:inset(0 0 0% 0);visibility:visible}
+#mobileMenu a.mlink{display:block;font-family:var(--disp);font-size:44px;font-weight:700;letter-spacing:-.02em;color:rgba(255,255,255,.9);padding:6px 0}
+#mobileMenu a.mlink small{font-size:12px;color:var(--mist);vertical-align:super;margin-right:14px}
+#mobileMenu .minfo{margin-top:40px;font-size:14px;color:var(--mist)}
+
+/* floating CTA */
+#floatCta{position:fixed;bottom:24px;right:24px;z-index:105;display:flex;align-items:center;gap:12px;border-radius:999px;padding:12px 16px 12px 20px;background:rgba(11,11,18,.72);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(24px);box-shadow:0 16px 60px -12px rgba(124,92,255,.5);opacity:0;transform:translateY(24px) scale(.8);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
+#floatCta.show{opacity:1;transform:none;pointer-events:auto}
+#floatCta .pulse{position:relative;width:10px;height:10px}
+#floatCta .pulse::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--cyan);opacity:.6;animation:ping 1.6s infinite}
+#floatCta .pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(90deg,var(--primary),var(--cyan))}
+@keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.4);opacity:0}}
+#floatCta .arr{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--ink);transition:transform .4s}
+#floatCta:hover .arr{transform:rotate(45deg)}
+@media(max-width:860px){#floatCta{display:none}}
+
+/* hero */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%}
+.hero-fade{pointer-events:none;position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 100%,rgba(5,5,7,.9),transparent 70%)}
+.hero-inner{position:relative;z-index:10;padding-top:128px;padding-bottom:96px}
+.hero-sub{margin-top:28px;max-width:560px;font-size:clamp(17px,1.6vw,20px);line-height:1.65;color:var(--mist)}
+.hero-btns{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
+.hero-meta{margin-top:56px;display:flex;gap:32px;font-size:14px;color:var(--mist);align-items:center}
+.dot-cyan{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);margin-right:8px}
+.float-mock{position:absolute;z-index:5;width:420px;right:-4%;top:16%;animation:floaty 7s ease-in-out infinite;transform:rotate(4deg)}
+.float-mock2{position:absolute;z-index:4;width:300px;right:16%;bottom:8%;animation:floaty 9s 1.2s ease-in-out infinite;transform:rotate(-5deg)}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -16px}}
+@media(max-width:1280px){.float-mock,.float-mock2{display:none}}
+.scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist)}
+.mouse{display:flex;align-items:flex-start;justify-content:center;width:28px;height:48px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:8px}
+.mouse i{width:6px;height:6px;border-radius:50%;background:#fff;animation:sdot 1.8s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes sdot{0%{transform:translateY(0);opacity:1}70%{transform:translateY(14px);opacity:0}100%{transform:translateY(0);opacity:0}}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:20px}
+.mtrack{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mtrack.rev{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mtrack .mi{display:flex;align-items:center}
+.mtrack .mi span{padding:0 36px;font-family:var(--disp);font-size:clamp(18px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;color:rgba(255,255,255,.7)}
+.mtrack .star{background:linear-gradient(110deg,#fff,#b7a6ff,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:20px}
+
+/* grids */
+.grid3{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
+.grid2{display:grid;gap:32px;grid-template-columns:repeat(2,1fr)}
+@media(max-width:1024px){.grid3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.grid3,.grid2{grid-template-columns:1fr}}
+
+/* icon chip */
+.ichip{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.15));color:var(--cyan);margin-bottom:20px;transition:transform .5s}
+.card:hover .ichip{transform:translateY(-4px) scale(1.1)}
+.ichip svg{width:24px;height:24px}
+.icircle{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);color:var(--cyan);margin-bottom:20px;transition:all .5s}
+.card:hover .icircle{border-color:rgba(124,92,255,.5);background:rgba(124,92,255,.1)}
+.icircle svg{width:22px;height:22px}
+.cardnum{position:absolute;right:20px;top:14px;font-family:var(--disp);font-size:46px;font-weight:700;color:rgba(255,255,255,.06);transition:color .5s}
+.card:hover .cardnum{color:rgba(124,92,255,.2)}
+
+/* stats */
+.stats{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border-left:1px solid var(--line);padding-left:16px}
+.stat b{font-family:var(--disp);font-size:clamp(28px,3vw,36px);font-weight:700}
+.stat p{margin-top:4px;font-size:12px;line-height:1.4;color:var(--mist)}
+
+/* monogram */
+.mono{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;border-radius:24px;padding:32px;overflow:hidden}
+.mono::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 80% 0%,rgba(124,92,255,.25),transparent 55%),radial-gradient(100% 90% at 10% 100%,rgba(34,211,238,.18),transparent 55%)}
+.mono>*{position:relative}
+@media(max-width:1024px){.mono{display:none}}
+
+/* work */
+.workgrid{margin-top:64px;display:grid;gap:32px;grid-template-columns:repeat(2,1fr)}
+@media(max-width:1024px){.workgrid{grid-template-columns:1fr}}
+.wcard{display:block}
+.wcard .frame-wrap{overflow:hidden;border-radius:12px;transition:transform .7s var(--ease)}
+.wcard:hover .frame-wrap{transform:scale(1.02)}
+.wcard .whead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.wcard .wfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:24px}
+.wcard h3{font-family:var(--disp);font-size:26px;font-weight:700;letter-spacing:-.02em}
+.wcard .wtagline{margin-top:4px;font-size:14px;color:var(--mist)}
+.wcard .wtags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.wcard .warr{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);font-size:18px;transition:all .5s}
+.wcard:hover .warr{transform:rotate(45deg);border-color:rgba(124,92,255,.6);background:rgba(124,92,255,.15)}
+@media(min-width:1024px){.workgrid>div:nth-child(4n+2),.workgrid>div:nth-child(4n+3){margin-top:64px}}
+
+/* frames */
+.bframe{overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:var(--ink3);box-shadow:0 40px 120px -30px rgba(0,0,0,.8)}
+.bframe .bbar{display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.05);background:#15151f;padding:10px 14px}
+.bframe .bdot{width:10px;height:10px;border-radius:50%}
+.bframe .burl{margin:0 auto;display:flex;align-items:center;gap:6px;border-radius:6px;background:rgba(255,255,255,.05);padding:4px 16px;font-size:10px;color:rgba(255,255,255,.4)}
+.bframe .bbody{container-type:inline-size}
+.pframe{position:relative;overflow:hidden;border-radius:35px;border:3px solid #26262f;background:var(--ink3);box-shadow:0 30px 90px -20px rgba(0,0,0,.8)}
+.pframe .notch{position:absolute;left:50%;top:8px;z-index:10;height:14px;width:34%;transform:translateX(-50%);border-radius:99px;background:#15151c}
+.pframe .pbody{container-type:inline-size}
+.mock{display:flex;flex-direction:column;overflow:hidden;font-family:var(--disp);font-size:1.78cqw;aspect-ratio:16/10}
+.mock.mobile{font-size:5.2cqw;aspect-ratio:9/18.5}
+
+/* process */
+.timeline{position:relative;margin-top:80px}
+.spine,.spine-fill{position:absolute;left:19px;top:0;height:100%;width:1px}
+.spine{background:rgba(255,255,255,.1)}
+.spine-fill{background:linear-gradient(180deg,#7c5cff,#f472b6,#22d3ee);transform:scaleY(0);transform-origin:top}
+.steps{display:flex;flex-direction:column;gap:56px}
+.step{position:relative;padding-left:56px}
+.step .node{position:absolute;left:11px;top:4px;width:17px;height:17px;display:grid;place-items:center}
+.step .node::before{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(124,92,255,.3);filter:blur(6px)}
+.step .node::after{content:"";position:relative;width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,var(--primary),var(--cyan))}
+.step .snum{font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.3em}
+.step h3{margin-top:8px;font-family:var(--disp);font-size:clamp(24px,2.6vw,30px);font-weight:700}
+.step p{margin-top:12px;max-width:440px;font-size:14px;line-height:1.65;color:var(--mist)}
+@media(min-width:768px){
+  .spine,.spine-fill{left:50%}
+  .steps{gap:80px}
+  .step{display:grid;grid-template-columns:1fr 1fr;padding-left:0}
+  .step .node{left:50%;transform:translateX(-50%)}
+  .step:nth-child(odd) .scontent{grid-column:1;padding-right:80px;text-align:right}
+  .step:nth-child(odd) .scontent p{margin-left:auto}
+  .step:nth-child(even) .scontent{grid-column:2;padding-left:80px}
+}
+
+/* contact */
+.contact-grid{margin-top:40px;display:grid;gap:64px;grid-template-columns:1.1fr 1fr}
+@media(max-width:1024px){.contact-grid{grid-template-columns:1fr}}
+.clabel{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--mist)}
+.cvalue{margin-top:4px;font-family:var(--disp);font-size:20px;font-weight:600;display:inline-block}
+.cvalue .uline{display:block;height:1px;max-width:0;background:linear-gradient(90deg,var(--primary),var(--cyan));transition:max-width .5s}
+.cvalue:hover .uline{max-width:100%}
+.field{width:100%;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:16px 20px;font-size:14px;color:#fff;outline:none;transition:border-color .3s,background-color .3s;font-family:var(--body)}
+.field::placeholder{color:rgba(255,255,255,.3)}
+.field:focus{border-color:rgba(124,92,255,.6);background:rgba(124,92,255,.04)}
+.ptype{border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-size:12px;font-weight:500;color:var(--mist);transition:all .3s}
+.ptype:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.ptype.sel{border-color:rgba(124,92,255,.7);background:rgba(124,92,255,.15);color:#fff}
+
+/* footer */
+footer{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.fgrid{display:grid;gap:48px;grid-template-columns:1.4fr 1fr 1fr;padding-block:80px 64px}
+@media(max-width:860px){.fgrid{grid-template-columns:1fr}}
+.fhead{margin-bottom:20px;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--mist)}
+.flink{display:block;padding:5px 0;font-size:14px;color:rgba(255,255,255,.7);transition:color .3s}
+.flink:hover{color:#fff}
+.wordmark{user-select:none;overflow:hidden;padding-bottom:8px;text-align:center;font-family:var(--disp);font-size:clamp(60px,11vw,160px);font-weight:700;line-height:1;letter-spacing:-.02em;white-space:nowrap}
+.fbottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-block:24px;font-size:12px;color:var(--mist)}
+
+/* case study */
+#casePage{display:none}
+body.case #homePage{display:none}
+body.case #casePage{display:block}
+.cs-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-top:144px;padding-bottom:64px}
+.cs-hero h1{font-family:var(--disp);font-size:clamp(44px,8vw,104px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.cs-section{padding-block:clamp(80px,9vw,140px);border-top:1px solid var(--line)}
+.cs-sub{margin-top:24px;max-width:760px;font-family:var(--disp);font-size:clamp(26px,3.6vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.12}
+.meta-card div{display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px;font-size:14px}
+.meta-card div:last-child{border:0;margin:0;padding:0}
+.quote-rail{position:relative;max-width:760px;padding-left:24px}
+.quote-rail::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;border-radius:3px}
+.swatch{aspect-ratio:1;border-radius:16px;border:1px solid rgba(255,255,255,.1);transition:transform .5s}
+.swatch:hover{transform:translateY(-6px)}
+.sw-grid{display:grid;gap:16px;grid-template-columns:repeat(5,1fr)}
+@media(max-width:760px){.sw-grid{grid-template-columns:repeat(3,1fr)}}
+.wire{display:flex;flex-direction:column;gap:8px;aspect-ratio:4/3;border-radius:14px;border:1px dashed rgba(255,255,255,.2);background:rgba(255,255,255,.02);padding:12px}
+.wb{border-radius:4px;background:rgba(255,255,255,.1)}
+.phones{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:32px}
+.phones>div{width:210px}
+@media(min-width:768px){.phones>div:nth-child(2){transform:translateY(-32px)}}
+.metric{padding:32px;text-align:center}
+.metric b{font-family:var(--disp);font-size:46px;font-weight:700}
+.metric p{margin-top:10px;font-size:14px;color:var(--mist)}
+.fchip{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;font-family:var(--disp);font-size:13px;font-weight:700;margin-bottom:22px}
+
+/* reveal animations */
+[data-reveal]{opacity:0;transform:translateY(44px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+[data-clip]{clip-path:inset(8% 6% 8% 6% round 24px);opacity:0;transform:scale(.97);transition:clip-path 1.1s var(--ease),opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+[data-clip].in{clip-path:inset(0 0 0 0 round 24px);opacity:1;transform:none}
+.wmask{display:inline-block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em;vertical-align:bottom}
+.wmask>span{display:inline-block;transform:translateY(115%) rotate(3deg);transition:transform .9s var(--ease)}
+.wmask.in>span{transform:none}
+.tilt{transform-style:preserve-3d;will-change:transform}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="aurora"><div class="blob" style="width:40vw;height:40vw;left:10%;top:20%;background:rgba(124,92,255,.3)"></div><div class="blob" style="width:34vw;height:34vw;right:8%;bottom:12%;background:rgba(34,211,238,.2)"></div></div>
+  <p class="brand">Build<span class="text-grad">ByTejas</span></p>
+  <p class="sub">Premium digital experiences</p>
+  <div class="meter"><div class="bar"><div class="fill" id="plFill"></div></div><span class="pct"><span id="plNum">0</span><small>%</small></span></div>
+</div>
+
+<div class="cdot" id="cdot"></div>
+<div class="cring" id="cring"><span class="ctext" id="ctext"></span></div>
+<div id="progress"></div>
+
+<header id="nav">
+  <div class="wrap"><nav class="inner" aria-label="Main navigation">
+    <a href="#hero" class="logo nav-go">Build<span class="text-grad">ByTejas</span> <span style="color:var(--cyan)">✦</span></a>
+    <ul>
+      <li><a href="#work" class="nav-go">Work</a></li>
+      <li><a href="#about" class="nav-go">About</a></li>
+      <li><a href="#services" class="nav-go">Services</a></li>
+      <li><a href="#process" class="nav-go">Process</a></li>
+      <li><a href="#contact" class="nav-go">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary cta magnetic nav-go">Start a Project</a>
+    <button class="burger" id="burger" aria-label="Toggle menu"><span></span><span></span></button>
+  </nav></div>
+</header>
+
+<div id="mobileMenu">
+  <div class="aurora"><div class="blob" style="width:60vw;height:60vw;left:-10%;top:10%;background:rgba(124,92,255,.25)"></div></div>
+  <a class="mlink nav-go" href="#work"><small>01</small>Work</a>
+  <a class="mlink nav-go" href="#about"><small>02</small>About</a>
+  <a class="mlink nav-go" href="#services"><small>03</small>Services</a>
+  <a class="mlink nav-go" href="#process"><small>04</small>Process</a>
+  <a class="mlink nav-go" href="#contact"><small>05</small>Contact</a>
+  <div class="minfo"><p>rathitejas975@gmail.com</p><p style="margin-top:4px">@buildbytejass</p></div>
+</div>
+
+<a href="#contact" id="floatCta" class="nav-go magnetic">
+  <span class="pulse"></span><span style="font-size:14px;font-weight:600">Start a Project</span><span class="arr">↗</span>
+</a>
+
+<div id="homePage">
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="aurora">
+      <div class="blob" style="width:46vw;height:46vw;left:-12%;top:-10%;background:rgba(124,92,255,.25)"></div>
+      <div class="blob" style="width:38vw;height:38vw;right:-10%;top:30%;background:rgba(34,211,238,.15)"></div>
+      <div class="blob" style="width:34vw;height:34vw;left:28%;bottom:-20%;background:rgba(244,114,182,.1)"></div>
+    </div>
+    <canvas id="scene"></canvas>
+    <div class="hero-fade"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow" data-reveal>BuildByTejas · Web Design &amp; Development</p>
+      <h1 class="h1" style="margin-top:32px;max-width:1000px;font-size:clamp(44px,8.5vw,108px)" data-words data-accent="Remembering.">Websites Worth Remembering.</h1>
+      <p class="hero-sub" data-reveal data-d="500">I design and build premium websites that help businesses stand out, attract customers, and grow online.</p>
+      <div class="hero-btns" data-reveal data-d="700">
+        <a href="#work" class="btn btn-primary magnetic nav-go">View My Work <span>↗</span></a>
+        <a href="#contact" class="btn btn-ghost magnetic nav-go">Start a Project</a>
+      </div>
+      <div class="hero-meta" data-reveal data-d="900">
+        <span><i class="dot-cyan"></i>Available for new projects</span>
+        <span class="hide-sm">Based in India · Working worldwide</span>
+      </div>
+    </div>
+    <div class="float-mock" id="heroMockA"></div>
+    <div class="float-mock2" id="heroMockB"></div>
+    <div class="scroll-ind" data-reveal data-d="1200"><div class="mouse"><i></i></div>Scroll</div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mtrack" id="mq1"></div></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="aurora"><div class="blob" style="width:36vw;height:36vw;right:-15%;top:10%;background:rgba(124,92,255,.15)"></div></div>
+    <div class="wrap" style="position:relative">
+      <p class="eyebrow" data-reveal>About</p>
+      <div style="margin-top:32px;display:grid;gap:64px;grid-template-columns:1fr" class="about-grid">
+        <div>
+          <h2 class="h2" data-words data-accent="attention. trust.">Design that earns attention. Code that earns trust.</h2>
+          <div data-reveal data-d="200">
+            <p style="margin-top:32px;max-width:580px;font-size:18px;line-height:1.7;color:var(--mist)">I'm <b style="color:#fff">Tejas Rathi</b>, founder of <span class="text-grad" style="font-weight:600">BuildByTejas</span> — a passionate web designer and developer creating modern websites focused on aesthetics, user experience, and business growth.</p>
+            <p style="margin-top:16px;max-width:580px;line-height:1.7;color:var(--mist)">Every project starts with a question: <em class="serif" style="color:rgba(255,255,255,.9)">what should a visitor feel in the first three seconds?</em> From there it's strategy, pixels, and performance — until the answer is "impressed".</p>
+          </div>
+          <div class="stats" data-reveal data-d="300">
+            <div class="stat"><b class="text-grad"><span data-count="8">0</span>+</b><p>Concept builds crafted</p></div>
+            <div class="stat"><b class="text-grad"><span data-count="6">0</span></b><p>Core services offered</p></div>
+            <div class="stat"><b class="text-grad"><span data-count="100">0</span>%</b><p>Hand-coded, no templates</p></div>
+            <div class="stat"><b class="text-grad"><span data-count="24">0</span>h</b><p>Average reply time</p></div>
+          </div>
+        </div>
+        <div class="mono glass tilt" data-reveal data-d="150">
+          <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--mist)"><span>Founder</span><span>Est. 2025</span></div>
+          <div>
+            <p class="text-outline" style="font-family:var(--disp);font-size:120px;font-weight:700;line-height:1">TR</p>
+            <p style="margin-top:16px;font-family:var(--disp);font-size:24px;font-weight:700">Tejas Rathi</p>
+            <p style="margin-top:4px;font-size:14px;color:var(--mist)">Founder of BuildByTejas — Designer · Developer</p>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--mist)"><span>Building premium digital experiences</span><span style="color:var(--cyan)">✦</span></div>
+        </div>
+      </div>
+      <div class="grid3" style="margin-top:80px" id="skillCards"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="aurora"><div class="blob" style="width:34vw;height:34vw;left:-12%;top:30%;background:rgba(34,211,238,.1)"></div></div>
+    <div class="wrap" style="position:relative">
+      <p class="eyebrow" data-reveal>Services</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <h2 class="h2" style="max-width:640px" data-words data-accent="win">Everything your business needs to win online.</h2>
+        <p data-reveal data-d="200" style="max-width:360px;color:var(--mist)">Six focused services. One standard: <b style="color:#fff">premium</b>.</p>
+      </div>
+      <div class="grid3" style="margin-top:64px" id="serviceCards"></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section">
+    <div class="aurora">
+      <div class="blob" style="width:40vw;height:40vw;right:-14%;top:5%;background:rgba(124,92,255,.12)"></div>
+      <div class="blob" style="width:30vw;height:30vw;left:-10%;bottom:10%;background:rgba(244,114,182,.08)"></div>
+    </div>
+    <div class="wrap" style="position:relative">
+      <p class="eyebrow" data-reveal>Featured Projects</p>
+      <h2 class="h2" style="margin-top:32px;max-width:760px" data-words data-accent="Concept">Concept work, real-world standards.</h2>
+      <p data-reveal data-d="150" style="margin-top:24px;max-width:640px;font-size:14px;line-height:1.7;color:var(--mist)" id="disclaimer"></p>
+      <div class="workgrid" id="workGrid"></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mtrack rev" id="mq2"></div></div>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Design Process</p>
+      <h2 class="h2" style="margin-top:32px;max-width:640px" data-words data-accent="outcomes.">A process built for outcomes.</h2>
+      <div class="timeline" id="timeline">
+        <div class="spine"></div><div class="spine-fill" id="spineFill"></div>
+        <div class="steps" id="stepsWrap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="section">
+    <div class="aurora"><div class="blob" style="width:34vw;height:34vw;left:30%;top:-10%;background:rgba(34,211,238,.1)"></div></div>
+    <div class="wrap" style="position:relative">
+      <p class="eyebrow" data-reveal>Why BuildByTejas</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <h2 class="h2" style="max-width:640px" data-words data-accent="different,">Built different, on purpose.</h2>
+        <p data-reveal data-d="200" style="max-width:360px;color:var(--mist)">The standards behind every project that leaves this studio.</p>
+      </div>
+      <div class="grid3" style="margin-top:64px" id="whyCards"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="overflow:hidden">
+    <div class="aurora">
+      <div class="blob" style="width:44vw;height:44vw;left:10%;top:20%;background:rgba(124,92,255,.2)"></div>
+      <div class="blob" style="width:36vw;height:36vw;right:5%;bottom:-10%;background:rgba(34,211,238,.12)"></div>
+      <div class="blob" style="width:28vw;height:28vw;right:30%;top:-10%;background:rgba(244,114,182,.1)"></div>
+    </div>
+    <div class="wrap" style="position:relative">
+      <p class="eyebrow" data-reveal>Contact</p>
+      <div class="contact-grid">
+        <div>
+          <h2 class="h1" style="font-size:clamp(40px,6.5vw,84px);line-height:1.04" data-words data-accent="Exceptional.">Let's Build Something Exceptional.</h2>
+          <p data-reveal data-d="250" style="margin-top:32px;max-width:440px;font-size:18px;color:var(--mist)">Have a project in mind? Tell me where you want your business to go — I'll design the website that takes it there.</p>
+          <div data-reveal data-d="350" style="margin-top:48px;display:flex;flex-direction:column;gap:24px">
+            <div><p class="clabel">Founder</p><p class="cvalue">Tejas Rathi · BuildByTejas</p></div>
+            <div><p class="clabel">Email</p><a class="cvalue" href="mailto:rathitejas975@gmail.com">rathitejas975@gmail.com<span class="uline"></span></a></div>
+            <div><p class="clabel">Instagram</p><a class="cvalue" href="https://www.instagram.com/buildbytejass" target="_blank" rel="noreferrer">@buildbytejass<span class="uline"></span></a></div>
+          </div>
+        </div>
+        <form class="glass" style="border-radius:24px;padding:32px" id="contactForm" data-reveal data-d="200" aria-label="Project enquiry form">
+          <div style="display:grid;gap:20px">
+            <div style="display:grid;gap:20px;grid-template-columns:1fr 1fr" class="ftwo">
+              <input class="field" required placeholder="Your name" id="fName" aria-label="Your name" />
+              <input class="field" required type="email" placeholder="Email address" id="fEmail" aria-label="Email address" />
+            </div>
+            <div>
+              <p class="clabel" style="margin-bottom:12px">Project type</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px" id="fTypes"></div>
+            </div>
+            <textarea class="field" required rows="5" style="resize:none" placeholder="Tell me about your project — goals, timeline, anything that matters." id="fMsg" aria-label="Project details"></textarea>
+            <button type="submit" class="btn btn-primary magnetic" style="width:100%" id="fSubmit">Send Enquiry <span>↗</span></button>
+            <p id="fNote" style="display:none;text-align:center;font-size:12px;color:var(--mist)">Didn't open? Email me directly at <a href="mailto:rathitejas975@gmail.com" style="color:var(--cyan)">rathitejas975@gmail.com</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="footerHome"></div>
+</div><!-- /homePage -->
+
+<div id="casePage"></div>
+
+<script>
+/* =================================================================
+   DATA — all 8 concept projects. Everything renders from this.
+   ================================================================= */
+var DISCLAIMER = "Designed as a concept project to demonstrate web design and development capabilities. Not a real client engagement.";
+
+var PROJECTS = [
+{slug:"shreeji-properties",name:"Shreeji Properties",industry:"Luxury Real Estate",year:"2025",
+ tagline:"Where heritage addresses meet modern living.",
+ services:["Web Design","Development","Lead Generation","Brand Direction"],domain:"shreejiproperties.in",
+ theme:{bg:"#0e0d0b",surface:"#1a1813",text:"#f5efe2",mute:"rgba(245,239,226,.55)",accent:"#d4af37",accent2:"#8a6d1f",light:false},
+ mock:{variant:"marketing",logo:"SP",nav:["Residences","Locations","Virtual Tours","Contact"],eyebrow:"Mumbai · Pune · Indore",
+  headline:["Homes Built for","Generations."],sub:"Curated luxury residences with private tours, verified titles and white-glove buying support.",
+  cta:"Book a Private Tour",cta2:"View Residences",
+  cards:[{t:"The Regency Penthouse",s:"4 BHK · Worli · ₹12.4 Cr"},{t:"Shreeji Sky Villas",s:"5 BHK · Baner · ₹6.8 Cr"},{t:"Heritage Courtyard",s:"Villa · Indore · ₹3.2 Cr"}]},
+ overview:"Shreeji Properties is a concept platform for a luxury real-estate house selling premium residences across Indian metros. The site positions property buying as a concierge experience — every listing presented like a private viewing, not a classified ad.",
+ challenge:"Luxury real-estate sites in India often look like databases: cluttered filters, watermark-heavy photos, zero storytelling. The challenge was to design a listing experience that feels editorial and trustworthy enough for a ₹10 Cr purchase decision, while still capturing leads aggressively beneath the calm surface.",
+ research:["Audited 14 Indian and international luxury property portals to map where trust breaks down — inconsistent pricing, missing legal status, and stocky photography topped the list.",
+  "Interviews with the target persona (HNI buyers, 35–55) showed they shortlist on photography and location first, and abandon sites that ask for a phone number before showing prices.",
+  "Defined a 'private viewing' content model: every property gets a narrative, a verified-title badge, a virtual tour and a dedicated relationship manager card.",
+  "Mapped a two-step lead funnel — soft save-to-shortlist first, hard tour-booking second — to capture intent without friction."],
+ features:[{title:"Cinematic Listings",desc:"Full-bleed property heroes with parallax photography, ambient gold lighting and a sticky enquiry rail."},
+  {title:"Interactive Map Search",desc:"Neighbourhood-level map explorer with price heat layers, commute times and school/hospital overlays."},
+  {title:"Virtual Tour Theatre",desc:"Distraction-free 360° walkthrough mode with chapter markers for each room and a floating book-a-visit CTA."},
+  {title:"Two-Step Lead Engine",desc:"Shortlist-first funnel with WhatsApp handoff, tour scheduling and automatic relationship-manager assignment."}],
+ colors:[{name:"Estate Black",hex:"#0e0d0b"},{name:"Heritage Gold",hex:"#d4af37"},{name:"Aged Brass",hex:"#8a6d1f"},{name:"Ivory",hex:"#f5efe2"},{name:"Stone",hex:"#1a1813"}],
+ fonts:[{name:"Cormorant Garamond",usage:"Display — property names & headlines"},{name:"Inter",usage:"Body — specs, legal copy, UI"}],
+ dsNote:"A restrained black-and-gold system built on generous whitespace. Gold is reserved exclusively for moments of action — prices, CTAs and verified badges — so it never loses its weight.",
+ wireNote:"Low-fidelity frames focused on the listing page: hero, trust strip, gallery rhythm, and the sticky enquiry rail. Three funnel variants were tested before locking the shortlist-first flow.",
+ outcome:"The concept demonstrates how editorial pacing and an unintrusive two-step funnel can coexist — a listings experience that feels like a magazine but is engineered like a conversion machine.",
+ metrics:[{v:98,suffix:"",l:"Lighthouse Performance target"},{v:40,suffix:"%",l:"Projected uplift in tour bookings"},{v:2,suffix:"s",l:"Largest Contentful Paint budget"}]},
+
+{slug:"tandoor-trails",name:"Tandoor Trails",industry:"Restaurant",year:"2025",
+ tagline:"A fire-side journey through North Indian cuisine.",
+ services:["Web Design","Development","Menu UX","Reservation Flow"],domain:"tandoortrails.com",
+ theme:{bg:"#140d0a",surface:"#241511",text:"#fdf3ea",mute:"rgba(253,243,234,.55)",accent:"#ff7a30",accent2:"#c2410c",light:false},
+ mock:{variant:"marketing",logo:"TT",nav:["Menu","Chef's Table","Gallery","Reserve"],eyebrow:"Est. 2025 · New Delhi",
+  headline:["Fire. Spice.","Memory."],sub:"A modern tandoor kitchen serving heirloom recipes — reserve your table for tonight's seating.",
+  cta:"Reserve a Table",cta2:"Explore the Menu",
+  cards:[{t:"Dhuandar Raan",s:"Slow-smoked · ₹1,450"},{t:"Anari Paneer Tikka",s:"Pomegranate glaze · ₹620"},{t:"Gulkand Kulfi Falooda",s:"Rose & saffron · ₹380"}]},
+ overview:"Tandoor Trails is a concept site for a modern North Indian restaurant where the menu is the hero. The experience is built around appetite: ember-toned visuals, dish-first photography placeholders and a reservation flow that never lets hunger cool down.",
+ challenge:"Most restaurant websites bury the two things guests actually want — the menu and a table — under sliders and PDF downloads. The challenge was an experience where every scroll deepens appetite and every section ends within one tap of a reservation.",
+ research:["Analysed booking behaviour patterns: the majority of reservation intent happens on mobile between 5–8 pm, so the mobile reserve flow was designed before desktop.",
+  "Benchmarked menu UX across fine-dining sites; PDF menus kill engagement, so dishes became animated, filterable cards with spice-level and dietary tags.",
+  "Story mapping with the fictional chef persona shaped the 'Trail' navigation — starters to dessert presented as a journey rather than categories.",
+  "Defined photography art direction: single dish, dark slate, side ember light — consistent enough to template across the whole menu."],
+ features:[{title:"Animated Living Menu",desc:"Dishes reveal with heat-shimmer transitions, filterable by course, spice level and dietary preference — no PDFs, ever."},
+  {title:"One-Thumb Reservations",desc:"Three-tap booking flow with live table availability, party-size presets and calendar handoff."},
+  {title:"Chef's Table Showcase",desc:"An editorial section introducing the kitchen brigade with portrait hovers and tasting-menu storytelling."},
+  {title:"Ember Gallery",desc:"A masonry food gallery with slow Ken Burns drift and lightbox viewing, tuned for appetite appeal."}],
+ colors:[{name:"Charred Oak",hex:"#140d0a"},{name:"Ember Orange",hex:"#ff7a30"},{name:"Tandoor Red",hex:"#c2410c"},{name:"Cream",hex:"#fdf3ea"},{name:"Smoke",hex:"#241511"}],
+ fonts:[{name:"Fraunces",usage:"Display — dish names & headlines"},{name:"Manrope",usage:"Body — descriptions, pricing, UI"}],
+ dsNote:"A heat-gradient system: backgrounds stay charred and dark while interaction states glow ember-orange, mimicking a tandoor's mouth. Type pairing balances heritage (serif) with utility (grotesque).",
+ wireNote:"Frames prioritised the mobile reserve flow and the menu card grid. The hero was deliberately kept to one dish, one line, one button — appetite needs no carousel.",
+ outcome:"The concept proves a restaurant site can behave like a great maître d' — atmospheric, unhurried, but always one gesture away from seating you.",
+ metrics:[{v:3,suffix:" taps",l:"From landing to confirmed table"},{v:99,suffix:"",l:"Lighthouse Accessibility target"},{v:60,suffix:"fps",l:"Menu animation budget"}]},
+
+{slug:"fitverse-india",name:"FitVerse India",industry:"Fitness",year:"2025",
+ tagline:"Train loud. Transform louder.",
+ services:["Web Design","Development","Membership UX","Brand Energy"],domain:"fitverse.in",
+ theme:{bg:"#0a0f0d",surface:"#13201a",text:"#f0fdf4",mute:"rgba(240,253,244,.55)",accent:"#b6f53c",accent2:"#16a34a",light:false},
+ mock:{variant:"marketing",logo:"FV",nav:["Programs","Trainers","Transformations","Join"],eyebrow:"12 Centres Across India",
+  headline:["Built Different.","Built Here."],sub:"Strength, conditioning and coaching programs engineered for real transformations.",
+  cta:"Start 7-Day Trial",cta2:"View Plans",
+  cards:[{t:"Beast Mode",s:"Strength · 12 weeks"},{t:"Shred Protocol",s:"Fat loss · 8 weeks"},{t:"Mobility Reset",s:"Recovery · 4 weeks"}]},
+ overview:"FitVerse India is a concept platform for a national gym chain that treats fitness like a movement, not a membership. High-contrast neon-on-dark visuals, kinetic type and a transformation gallery do the selling before any pricing table appears.",
+ challenge:"Gym websites either look like supplement ads or corporate brochures. The challenge was channeling raw training energy into a disciplined layout — loud where it motivates, calm where someone is comparing plans and entering card details.",
+ research:["Studied membership drop-off points: pricing pages that hide costs behind 'enquire now' lose trust — FitVerse shows full pricing with a comparison slider instead.",
+  "Transformation stories outperform equipment photos for conversion, so the before/after gallery became the site's centrepiece with swipeable reveals.",
+  "Trainer credibility ranked second in member surveys of comparable brands; trainer cards lead with certifications and client counts, not just physiques.",
+  "Mobile-first by necessity — the audience researches gyms between sets, so every key action works one-handed."],
+ features:[{title:"Transformation Slider Gallery",desc:"Interactive before/after reveals with member stories, program tags and weeks-to-result counters."},
+  {title:"Transparent Plan Builder",desc:"Side-by-side membership comparison with annual/monthly toggle and a savings calculator."},
+  {title:"Trainer Roster",desc:"Certification-first trainer profiles with speciality filters and direct session-booking hooks."},
+  {title:"Program Explorer",desc:"Goal-based program cards — strength, shred, mobility — each with intensity meters and weekly structure previews."}],
+ colors:[{name:"Locker Black",hex:"#0a0f0d"},{name:"Volt Lime",hex:"#b6f53c"},{name:"Deep Forest",hex:"#13201a"},{name:"Pure Rep White",hex:"#f0fdf4"},{name:"Iron Green",hex:"#16a34a"}],
+ fonts:[{name:"Archivo Expanded",usage:"Display — headlines & numbers"},{name:"Inter",usage:"Body — plans, schedules, UI"}],
+ dsNote:"Volt lime is the only saturated colour in the system and is rationed to action and progress: CTAs, counters, intensity bars. Everything else stays matte so the energy reads as focus, not noise.",
+ wireNote:"Wireframes tested three pricing-page structures; the winning frame puts the transformation gallery directly above plans so proof always precedes price.",
+ outcome:"The concept shows how a fitness brand can feel aggressive and trustworthy simultaneously — kinetic visuals up front, friction-free commerce underneath.",
+ metrics:[{v:7,suffix:"-day",l:"Trial-first funnel design"},{v:95,suffix:"",l:"Lighthouse Performance target"},{v:30,suffix:"%",l:"Projected trial-to-member lift"}]},
+
+{slug:"urban-threads",name:"Urban Threads",industry:"Fashion Brand",year:"2025",
+ tagline:"Streetwear with a tailor's discipline.",
+ services:["E-Commerce Design","Development","Lookbook","Checkout UX"],domain:"urbanthreads.store",
+ theme:{bg:"#f4f1ec",surface:"#ffffff",text:"#16130f",mute:"rgba(22,19,15,.55)",accent:"#c2552b",accent2:"#16130f",light:true},
+ mock:{variant:"commerce",logo:"UT",nav:["New Drops","Lookbook","Men","Women"],eyebrow:"SS25 Drop 02 — Live Now",
+  headline:["Wear the","City."],sub:"Limited-run streetwear cut with tailoring precision. New drop every month.",
+  cta:"Shop the Drop",cta2:"View Lookbook",
+  cards:[{t:"Boxy Oversized Tee",s:"₹1,499"},{t:"Raw-Hem Cargo",s:"₹2,899"},{t:"Monochrome Bomber",s:"₹4,599"}]},
+ overview:"Urban Threads is a concept e-commerce experience for a drop-based streetwear label. Unlike the dark portfolio convention, the store runs on gallery-white space — letting garments carry the colour while terracotta accents drive action.",
+ challenge:"Streetwear sites chase hype with chaos — glitch effects, countdown noise, cluttered grids. The challenge was to bottle drop-culture urgency inside an editorial, almost gallery-like store, and design a checkout that survives the 48-hour sellout traffic spike without a single confused tap.",
+ research:["Mapped the drop-day journey: returning fans need a two-tap path from notification to checkout, while first-timers need sizing confidence — two flows, one homepage.",
+  "Cart abandonment audits of comparable stores pinned size-uncertainty as the top killer; the PDP leads with a visual fit-guide and model-height references.",
+  "Lookbook traffic converts when shoppable; every editorial image got hotspot tags linking straight to products.",
+  "Checkout was wireframed as a single page with express-pay first — every extra step measured against a stopwatch, not opinion."],
+ features:[{title:"Drop Countdown System",desc:"Persistent but quiet drop timer with notify-me capture, switching the homepage state automatically at launch."},
+  {title:"Shoppable Lookbook",desc:"Editorial spreads with hotspot product tags, hover-to-peek pricing and add-to-cart without leaving the story."},
+  {title:"Fit-First Product Pages",desc:"Visual size guide, model-height references, fabric close-ups and paired-pieces styling suggestions."},
+  {title:"One-Page Express Checkout",desc:"Single-screen checkout with UPI/express-pay priority, inline validation and a sub-60-second target completion."}],
+ colors:[{name:"Gallery White",hex:"#f4f1ec"},{name:"Ink",hex:"#16130f"},{name:"Terracotta",hex:"#c2552b"},{name:"Pure White",hex:"#ffffff"},{name:"Concrete",hex:"#d8d2c8"}],
+ fonts:[{name:"Space Grotesk",usage:"Display — headlines & product names"},{name:"Inter",usage:"Body — specs, checkout, UI"}],
+ dsNote:"A light, editorial system where photography owns all saturation. Terracotta appears only on commerce actions — buy buttons, cart badges, sale tags — making 'add to cart' the loudest pixel on any screen.",
+ wireNote:"Frames concentrated on the PDP and single-page checkout. The grid uses a 12-column editorial layout that collapses to a swipeable 2-up product rail on mobile.",
+ outcome:"The concept demonstrates restraint as a conversion strategy — a hype brand store where urgency is structural (drops, timers, scarcity) rather than decorative.",
+ metrics:[{v:60,suffix:"s",l:"Target checkout completion"},{v:100,suffix:"",l:"Lighthouse Best-Practices target"},{v:25,suffix:"%",l:"Projected cart-abandonment cut"}]},
+
+{slug:"smilemint-dental",name:"SmileMint Dental",industry:"Dental Clinic",year:"2025",
+ tagline:"Dentistry that feels nothing like dentistry.",
+ services:["Web Design","Development","Booking UX","Local SEO"],domain:"smilemint.clinic",
+ theme:{bg:"#f3f8f7",surface:"#ffffff",text:"#0f2e2b",mute:"rgba(15,46,43,.55)",accent:"#2dd4a8",accent2:"#0f766e",light:true},
+ mock:{variant:"marketing",logo:"SM",nav:["Treatments","Doctors","Smile Gallery","Book"],eyebrow:"Open 7 Days · Andheri West",
+  headline:["Smiles, Minus","the Anxiety."],sub:"Painless modern dentistry with transparent pricing and same-day appointments.",
+  cta:"Book Appointment",cta2:"View Treatments",
+  cards:[{t:"Invisible Aligners",s:"From ₹65,000"},{t:"Laser Whitening",s:"₹8,500 · 45 min"},{t:"Painless RCT",s:"Single sitting"}]},
+ overview:"SmileMint is a concept site for a modern dental clinic designed around one insight: people don't fear dentists, they fear the unknown. Soft mint visuals, upfront pricing and doctor-first storytelling replace the usual sterile stock-photo experience.",
+ challenge:"Healthcare sites must win trust in seconds while serving anxious users who'd rather be anywhere else. The challenge was a calming visual system and a booking flow so effortless that scheduling a root canal feels lighter than ordering food.",
+ research:["Patient-journey mapping showed anxiety peaks at two moments: price uncertainty and 'what will happen to me' — so pricing and procedure walkthroughs are one click from anywhere.",
+  "Before/after galleries are the highest-trust content for cosmetic treatments; the Smile Gallery uses consent-first framing with treatment and duration labels.",
+  "Doctor profiles with credentials, photos and patient counts outperform clinic-facility pages for first-visit conversion.",
+  "Local SEO structure — treatment × locality landing pages with schema markup — was planned into the information architecture from day one."],
+ features:[{title:"Same-Day Booking Flow",desc:"Three-step appointment booking with live slot availability, treatment pre-select and WhatsApp confirmation."},
+  {title:"Transparent Pricing Cards",desc:"Every treatment lists honest price ranges, duration and sittings — anxiety's biggest antidote is clarity."},
+  {title:"Smile Gallery",desc:"Before/after slider gallery organised by treatment, with healing-time labels and patient stories."},
+  {title:"Meet Your Doctor First",desc:"Credential-rich doctor profiles with specialisations, so patients choose a person, not a chair."}],
+ colors:[{name:"Mint Mist",hex:"#f3f8f7"},{name:"Fresh Mint",hex:"#2dd4a8"},{name:"Deep Teal",hex:"#0f766e"},{name:"Evergreen Ink",hex:"#0f2e2b"},{name:"Clinical White",hex:"#ffffff"}],
+ fonts:[{name:"Plus Jakarta Sans",usage:"Display — headlines & doctor names"},{name:"Inter",usage:"Body — treatment info, pricing, UI"}],
+ dsNote:"A light therapeutic palette with rounded geometry everywhere — soft corners lower perceived clinical harshness. Mint is the action colour; deep teal carries authority in credentials and pricing.",
+ wireNote:"Wireframes optimised the booking widget's placement: persistent on desktop's right rail, docked as a bottom bar on mobile — never more than one thumb-reach away.",
+ outcome:"The concept reframes a dental visit as a consumer experience — calm, priced, and personal — proving healthcare UX can convert without ever feeling salesy.",
+ metrics:[{v:3,suffix:" steps",l:"Booking flow length"},{v:100,suffix:"",l:"Lighthouse SEO target"},{v:45,suffix:"%",l:"Projected call-to-booking shift"}]},
+
+{slug:"scalespark-media",name:"ScaleSpark Media",industry:"Marketing Agency",year:"2025",
+ tagline:"Performance marketing with receipts.",
+ services:["Web Design","Development","Dashboard UI","Case Study System"],domain:"scalespark.agency",
+ theme:{bg:"#0a0a14",surface:"#131322",text:"#eef0ff",mute:"rgba(238,240,255,.55)",accent:"#4f7dff",accent2:"#c026d3",light:false},
+ mock:{variant:"dashboard",logo:"SS",nav:["Services","Case Studies","Results","Audit"],eyebrow:"ROAS-Obsessed Growth Partner",
+  headline:["Marketing That","Shows Its Math."],sub:"Paid media, SEO and CRO for brands that demand attributable revenue.",
+  cta:"Get Free Audit",cta2:"See Case Studies",
+  kpis:[{v:"4.8x",l:"Avg. ROAS"},{v:"₹38L",l:"Ad Spend Managed"},{v:"+212%",l:"Organic Growth"}],
+  bars:[34,58,42,71,56,88,64,95],
+  cards:[{t:"D2C Skincare Brand",s:"ROAS 2.1x → 5.6x in 90 days"},{t:"B2B SaaS Pipeline",s:"+340% qualified demos"},{t:"Marketplace Seller",s:"₹4.2Cr attributed revenue"}]},
+ overview:"ScaleSpark is a concept site for a performance-marketing agency that leads with numbers instead of adjectives. The homepage behaves like a live dashboard — animated KPI counters, growth charts and case studies structured as profit-and-loss stories.",
+ challenge:"Every agency claims 'results-driven'. The challenge was making the claim structural: design a site where data visualisation is the brand language, while keeping it warm enough that founders feel a partner behind the dashboard, not a spreadsheet.",
+ research:["Analysed agency-selection behaviour: founders shortlist on proof (case studies with hard numbers) and disqualify on vagueness — so every service page leads with a result, not a description.",
+  "Free-audit offers convert best when scoped; the audit CTA promises a specific deliverable — '12-point teardown in 48 hours'.",
+  "Case studies follow a strict before/after/how template; consistency itself signals operational discipline.",
+  "Motion research: chart animations must draw value (bars growing, counters climbing) — decorative motion was banned from data zones."],
+ features:[{title:"Live-Feel KPI Dashboard",desc:"Animated revenue counters, ROAS dials and growth charts that assemble themselves on scroll."},
+  {title:"P&L-Style Case Studies",desc:"Templated result stories — situation, spend, strategy, revenue — with verified-metric badges."},
+  {title:"48-Hour Audit Funnel",desc:"Scoped lead-gen offer with a 12-point teardown promise, qualifying form and calendar booking handoff."},
+  {title:"Service ROI Pages",desc:"Each service page opens with the average client outcome and a calculator estimating the visitor's upside."}],
+ colors:[{name:"Boardroom Navy",hex:"#0a0a14"},{name:"Signal Blue",hex:"#4f7dff"},{name:"Spark Magenta",hex:"#c026d3"},{name:"Paper White",hex:"#eef0ff"},{name:"Graph Slate",hex:"#131322"}],
+ fonts:[{name:"Geist",usage:"Display — KPIs, headlines & numerals"},{name:"Inter",usage:"Body — case copy, forms, UI"}],
+ dsNote:"A data-forward system where blue means metric and magenta means action. Tabular numerals everywhere numbers appear; charts share one grid, one easing curve, one vocabulary.",
+ wireNote:"Frames stress-tested the homepage's data density — three KPI layouts were dialled back until scanability beat spectacle. The audit form lost every field that didn't qualify the lead.",
+ outcome:"The concept shows an agency brand built from evidence design: when the website itself feels like a well-run dashboard, 'we're data-driven' no longer needs saying.",
+ metrics:[{v:48,suffix:"h",l:"Audit delivery promise"},{v:97,suffix:"",l:"Lighthouse Performance target"},{v:3,suffix:"x",l:"Projected audit-form conversion"}]},
+
+{slug:"taskflow-ai",name:"TaskFlow AI",industry:"SaaS Startup",year:"2025",
+ tagline:"Your projects, on autopilot.",
+ services:["Product Site Design","Development","Dashboard UI","Pricing UX"],domain:"taskflow.ai",
+ theme:{bg:"#07070d",surface:"#101019",text:"#f1f0ff",mute:"rgba(241,240,255,.55)",accent:"#8b5cf6",accent2:"#22d3ee",light:false},
+ mock:{variant:"dashboard",logo:"TF",nav:["Product","Pricing","Changelog","Docs"],eyebrow:"Backed by builders · v2.0",
+  headline:["Ship Projects.","Skip Busywork."],sub:"TaskFlow's AI triages tasks, writes updates and unblocks your team automatically.",
+  cta:"Start Free",cta2:"Watch Demo",
+  kpis:[{v:"12h",l:"Saved / week / team"},{v:"87%",l:"Less Status Meetings"},{v:"3.2k",l:"Teams Onboard"}],
+  bars:[25,40,38,62,58,80,74,92],
+  cards:[{t:"AI Standup Writer",s:"Daily digests, zero meetings"},{t:"Auto-Triage",s:"Tasks routed by priority"},{t:"Blocker Radar",s:"Risks flagged early"}]},
+ overview:"TaskFlow AI is a concept marketing site for a project-management SaaS whose pitch is invisible work. The site sells software by showing it: a living product mock in the hero, a guided walkthrough that scrolls like a demo, and pricing designed for self-serve conversion.",
+ challenge:"SaaS sites drown in feature lists nobody reads. The challenge was a product-led narrative — let visitors watch the AI triage a chaotic board in the hero, feel the time savings, and reach a free-trial CTA before a single bullet-point appears.",
+ research:["Teardowns of high-converting SaaS sites (Linear, Vercel, Notion) showed product UI as hero outperforms abstract illustration — the mock dashboard became the first thing rendered.",
+  "Pricing-page research: a highlighted 'most popular' tier with seat-based math and an annual toggle is still the highest-clarity pattern for self-serve.",
+  "The scroll-driven walkthrough was storyboarded like a product demo: problem board → AI acts → calm board, three scenes, one scroll.",
+  "Developer-credibility signals (changelog, docs, uptime, SOC2) were elevated into top-level navigation based on B2B buying-committee behaviour."],
+ features:[{title:"Living Hero Dashboard",desc:"An animated product mock where AI visibly triages tasks — the demo starts before the first click."},
+  {title:"Scroll-Driven Walkthrough",desc:"A three-scene product story pinned to scroll: chaos, automation, calm — each scene one core feature."},
+  {title:"Self-Serve Pricing",desc:"Seat-based calculator, annual/monthly toggle, highlighted team tier and a no-card free trial."},
+  {title:"Trust Layer",desc:"Changelog stream, uptime badge, SOC2 mark and docs-first navigation for technical evaluators."}],
+ colors:[{name:"Void",hex:"#07070d"},{name:"Automation Violet",hex:"#8b5cf6"},{name:"Signal Cyan",hex:"#22d3ee"},{name:"Interface White",hex:"#f1f0ff"},{name:"Panel",hex:"#101019"}],
+ fonts:[{name:"Sora",usage:"Display — headlines & feature names"},{name:"Inter",usage:"Body — docs, pricing, UI copy"}],
+ dsNote:"A product-grade system: violet for AI actions, cyan for human ones — a colour grammar that teaches the product's mental model before onboarding does.",
+ wireNote:"Wireframes treated the homepage as a demo script. Every section was timed: if a scene couldn't communicate its feature within two scroll-lengths, it was cut or merged.",
+ outcome:"The concept demonstrates product-led storytelling — a SaaS site that behaves like a self-running demo and funnels straight into a no-friction trial.",
+ metrics:[{v:0,suffix:" cards",l:"Required for free trial"},{v:96,suffix:"",l:"Lighthouse Performance target"},{v:2,suffix:"x",l:"Projected trial-signup lift"}]},
+
+{slug:"maharaja-retreats",name:"Maharaja Retreats",industry:"Luxury Resort",year:"2025",
+ tagline:"Palaces reimagined as sanctuaries.",
+ services:["Web Design","Development","Booking UX","Visual Direction"],domain:"maharajaretreats.com",
+ theme:{bg:"#0c0a08",surface:"#1c1610",text:"#f6ead8",mute:"rgba(246,234,216,.55)",accent:"#e0b973",accent2:"#0f5132",light:false},
+ mock:{variant:"marketing",logo:"MR",nav:["Palaces","Suites","Experiences","Reserve"],eyebrow:"Udaipur · Jaipur · Jodhpur",
+  headline:["Sleep Where","Kings Dreamed."],sub:"Heritage palace stays with private butlers, lake views and centuries of story.",
+  cta:"Reserve Your Stay",cta2:"Explore Palaces",
+  cards:[{t:"Lake Palace Suite",s:"Udaipur · ₹85,000/night"},{t:"Sheesh Mahal Room",s:"Jaipur · ₹52,000/night"},{t:"Durbar Residence",s:"Jodhpur · ₹68,000/night"}]},
+ overview:"Maharaja Retreats is a concept site for a heritage-palace hotel collection across Rajasthan. The design language borrows from royal architecture — arches, gold leaf, deep shadows — while the booking engine underneath runs with modern OTA-grade efficiency.",
+ challenge:"Heritage hospitality brands struggle online: ornate identities collapse into cluttered websites, and booking flows get outsourced to ugly third-party widgets. The challenge was carrying palace grandeur into digital without kitsch, and owning the reservation flow end-to-end.",
+ research:["Luxury-travel booking research shows guests at this tier book multi-night experiences, not rooms — the IA is organised by palace and experience first, room type second.",
+  "International guests (the primary persona) need currency switching, concierge contact and airport-transfer clarity before committing — all surfaced pre-checkout.",
+  "Photography pacing study: full-bleed architectural shots with slow parallax outperform gallery grids for emotional engagement at this price point.",
+  "The reservation flow was benchmarked against leading luxury-hospitality patterns — date-first entry with a visual suite-comparison step."],
+ features:[{title:"Palace Storytelling Pages",desc:"Each property unfolds as a chaptered story — history, architecture, suites, dining — with parallax architectural photography."},
+  {title:"Suite Comparison Theatre",desc:"Side-by-side suite explorer with floor plans, view directions, butler inclusions and seasonal pricing."},
+  {title:"Owned Booking Flow",desc:"Date-first reservation engine with currency switching, experience add-ons and concierge handoff — no third-party widgets."},
+  {title:"Experience Gallery",desc:"Curated experiences — lake dinners, heritage walks, royal spa rituals — each bookable as stay add-ons."}],
+ colors:[{name:"Palace Night",hex:"#0c0a08"},{name:"Gold Leaf",hex:"#e0b973"},{name:"Royal Emerald",hex:"#0f5132"},{name:"Silk Cream",hex:"#f6ead8"},{name:"Carved Teak",hex:"#1c1610"}],
+ fonts:[{name:"Marcellus",usage:"Display — palace names & headlines"},{name:"Manrope",usage:"Body — booking flow, details, UI"}],
+ dsNote:"Arched masks on imagery echo Rajput architecture; gold is applied like actual gold leaf — thin lines, fine borders, never floods. Emerald grounds the booking journey in calm.",
+ wireNote:"Frames balanced narrative against utility: every storytelling chapter carries a quiet, sticky 'Reserve' affordance so immersion never costs a booking.",
+ outcome:"The concept proves heritage and conversion aren't rivals — a palace can keep its soul online while its booking engine runs like a modern SaaS product.",
+ metrics:[{v:4,suffix:" steps",l:"Date-to-confirmation flow"},{v:98,suffix:"",l:"Lighthouse Accessibility target"},{v:35,suffix:"%",l:"Projected direct-booking shift"}]}
+];
+
+/* =================================================================
+   PROCEDURAL MOCKUPS — every "screenshot" is rendered HTML/CSS
+   ================================================================= */
+function bd(light){return light?"1px solid rgba(0,0,0,.09)":"1px solid rgba(255,255,255,.09)"}
+function pill(txt,bg,col){return '<span style="display:inline-flex;align-items:center;justify-content:center;font-size:.68em;font-weight:600;border-radius:99em;padding:.5em 1.2em;white-space:nowrap;background:'+bg+';color:'+col+'">'+txt+'</span>'}
+function pillOutline(txt,col,bcol){return '<span style="display:inline-flex;align-items:center;justify-content:center;font-size:.68em;font-weight:600;border-radius:99em;padding:.5em 1.2em;white-space:nowrap;border:1px solid '+bcol+';color:'+col+'">'+txt+'</span>'}
+
+function mockNav(p){
+  var t=p.theme,m=p.mock;
+  var links=m.nav.map(function(n){return '<span style="font-size:.7em;color:'+t.mute+'">'+n+'</span>'}).join('');
+  return '<div style="display:flex;align-items:center;justify-content:space-between;padding:.9em 1.4em;border-bottom:'+bd(t.light)+'">'
+   +'<div style="display:flex;align-items:center;gap:.6em"><span style="display:grid;place-items:center;width:1.7em;height:1.7em;border-radius:.45em;background:'+t.accent+';color:'+(t.light?'#fff':t.bg)+';font-weight:800;font-size:.7em">'+m.logo+'</span>'
+   +'<span style="font-weight:700;font-size:.85em">'+p.name+'</span></div>'
+   +'<div style="display:flex;gap:1.7em">'+links+'</div>'
+   +pill(m.cta,t.accent,(t.light?'#fff':t.bg))+'</div>';
+}
+
+function heroVisual(t){
+  return '<div style="position:relative;overflow:hidden;border-radius:.9em;background:linear-gradient(135deg,'+t.accent+' 0%,'+t.accent2+' 100%);min-height:11em;height:100%">'
+   +'<div style="position:absolute;width:10em;height:10em;border-radius:50%;border:1px solid rgba(255,255,255,.35);right:-3em;top:-3em"></div>'
+   +'<div style="position:absolute;width:5em;height:5em;border-radius:50%;background:rgba(255,255,255,.14);left:18%;top:16%"></div>'
+   +'<div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 110%,rgba(0,0,0,.45),transparent 60%)"></div>'
+   +'<div style="position:absolute;left:.9em;bottom:.9em;right:30%;border-radius:.6em;padding:.7em .8em;background:rgba(10,10,10,.4);backdrop-filter:blur(8px)">'
+   +'<div style="height:.5em;width:70%;border-radius:99em;background:rgba(255,255,255,.85);margin-bottom:.45em"></div>'
+   +'<div style="height:.4em;width:45%;border-radius:99em;background:rgba(255,255,255,.4)"></div></div></div>';
+}
+
+function marketingMock(p){
+  var t=p.theme,m=p.mock;
+  var cards=m.cards.map(function(c){
+    return '<div style="background:'+t.surface+';border:'+bd(t.light)+';border-radius:.7em;padding:.8em .9em">'
+     +'<div style="height:2.6em;border-radius:.45em;margin-bottom:.7em;background:linear-gradient(120deg,'+t.accent+'33,'+t.accent2+'55)"></div>'
+     +'<div style="font-size:.66em;font-weight:700">'+c.t+'</div>'
+     +'<div style="font-size:.58em;color:'+t.mute+';margin-top:.25em">'+c.s+'</div></div>';
+  }).join('');
+  return mockNav(p)
+   +'<div style="flex:1;display:grid;grid-template-columns:1.15fr 1fr;gap:1.4em;padding:1.5em 1.4em 1.1em;align-items:center"><div>'
+   +'<span style="font-size:.58em;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:'+t.accent+'">'+m.eyebrow+'</span>'
+   +'<div style="font-size:1.95em;font-weight:800;line-height:1.06;letter-spacing:-.02em;margin:.25em 0 .4em">'+m.headline[0]+'<br><span style="color:'+t.accent+'">'+m.headline[1]+'</span></div>'
+   +'<p style="font-size:.7em;line-height:1.55;color:'+t.mute+';max-width:26em;margin:0 0 1.3em">'+m.sub+'</p>'
+   +'<div style="display:flex;gap:.7em">'+pill(m.cta,t.accent,(t.light?'#fff':t.bg))+pillOutline(m.cta2,t.text,(t.light?'rgba(0,0,0,.2)':'rgba(255,255,255,.25)'))+'</div>'
+   +'</div>'+heroVisual(t)+'</div>'
+   +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8em;padding:0 1.4em 1.3em">'+cards+'</div>';
+}
+
+function commerceMock(p){
+  var t=p.theme,m=p.mock;
+  var items=m.cards.map(function(c,i){
+    var bg=i===1?'linear-gradient(150deg,'+t.accent2+','+t.accent+')':'linear-gradient(150deg,'+t.accent+(t.light?'26':'40')+','+t.accent2+(t.light?'33':'66')+')';
+    return '<div style="display:flex;flex-direction:column">'
+     +'<div style="flex:1;min-height:7em;border-radius:.7em;position:relative;overflow:hidden;background:'+bg+'">'
+     +'<span style="position:absolute;top:.6em;left:.6em;font-size:.52em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4em .8em;border-radius:99em;background:'+(t.light?'rgba(255,255,255,.85)':'rgba(0,0,0,.45)')+';color:'+(t.light?t.text:'#fff')+'">Drop 02</span></div>'
+     +'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:.6em"><div>'
+     +'<div style="font-size:.64em;font-weight:700">'+c.t+'</div><div style="font-size:.6em;color:'+t.accent+';font-weight:700">'+c.s+'</div></div>'
+     +'<span style="display:grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;font-size:.7em;background:'+t.accent2+';color:#fff">+</span></div></div>';
+  }).join('');
+  return '<div style="text-align:center;font-size:.58em;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.55em;background:'+t.accent+';color:'+(t.light?'#fff':t.bg)+'">'+m.eyebrow+'</div>'
+   +mockNav(p)
+   +'<div style="padding:1.3em 1.4em .9em;display:flex;align-items:flex-end;justify-content:space-between">'
+   +'<div style="font-size:1.9em;font-weight:800;line-height:1.04;letter-spacing:-.02em">'+m.headline[0]+' <span style="color:'+t.accent+'">'+m.headline[1]+'</span></div>'
+   +'<p style="font-size:.66em;color:'+t.mute+';max-width:22em;text-align:right;line-height:1.5;margin:0">'+m.sub+'</p></div>'
+   +'<div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:.9em;padding:0 1.4em 1.3em;align-items:stretch">'+items+'</div>';
+}
+
+function dashboardMock(p){
+  var t=p.theme,m=p.mock;
+  var kpis=m.kpis.map(function(k){
+    return '<div style="border:'+bd(false)+';border-radius:.55em;padding:.55em .7em;background:rgba(255,255,255,.03)">'
+     +'<div style="font-size:.85em;font-weight:800;color:'+t.accent+'">'+k.v+'</div>'
+     +'<div style="font-size:.5em;color:'+t.mute+'">'+k.l+'</div></div>';
+  }).join('');
+  var bars=m.bars.map(function(h,i){
+    var bg=i===m.bars.length-1?'linear-gradient(180deg,'+t.accent+','+t.accent2+')':'linear-gradient(180deg,'+t.accent+'66,'+t.accent+'22)';
+    return '<div style="flex:1;height:'+h+'%;border-radius:.3em .3em 0 0;background:'+bg+'"></div>';
+  }).join('');
+  var menu=[80,60,70,50,65].map(function(w,i){
+    return '<div style="height:.5em;width:'+w+'%;border-radius:99em;background:'+(i===0?t.accent:'rgba(255,255,255,.14)')+'"></div>';
+  }).join('');
+  return mockNav(p)
+   +'<div style="text-align:center;padding:1.2em 1.4em .9em">'
+   +'<div style="font-size:1.7em;font-weight:800;line-height:1.08;letter-spacing:-.02em">'+m.headline[0]+' <span style="color:'+t.accent+'">'+m.headline[1]+'</span></div>'
+   +'<p style="font-size:.66em;color:'+t.mute+';margin:.5em 0 .9em">'+m.sub+'</p>'
+   +'<div style="display:flex;gap:.7em;justify-content:center">'+pill(m.cta,t.accent,'#fff')+pillOutline(m.cta2,t.text,'rgba(255,255,255,.25)')+'</div></div>'
+   +'<div style="flex:1;padding:0 1.4em 1.3em;display:flex">'
+   +'<div style="flex:1;display:flex;border-radius:.8em;overflow:hidden;border:'+bd(false)+';background:'+t.surface+'">'
+   +'<div style="width:22%;padding:.9em .8em;border-right:'+bd(false)+';display:flex;flex-direction:column;gap:.7em">'+menu+'</div>'
+   +'<div style="flex:1;padding:.9em;display:flex;flex-direction:column;gap:.8em">'
+   +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.6em">'+kpis+'</div>'
+   +'<div style="flex:1;display:flex;align-items:flex-end;gap:.45em;padding:.6em .4em 0;border-top:'+bd(false)+'">'+bars+'</div>'
+   +'</div></div></div>';
+}
+
+function mobileMock(p){
+  var t=p.theme,m=p.mock,isDash=m.variant==="dashboard";
+  var body;
+  if(isDash){
+    var k2=m.kpis.slice(0,2).map(function(k){
+      return '<div style="border:'+bd(false)+';border-radius:.5em;padding:.5em .6em;background:rgba(255,255,255,.03)"><div style="font-size:.72em;font-weight:800;color:'+t.accent+'">'+k.v+'</div><div style="font-size:.46em;color:'+t.mute+'">'+k.l+'</div></div>';
+    }).join('');
+    var b2=m.bars.slice(0,6).map(function(h){
+      return '<div style="flex:1;height:'+h+'%;border-radius:.25em .25em 0 0;background:linear-gradient(180deg,'+t.accent+','+t.accent+'22)"></div>';
+    }).join('');
+    body='<div style="flex:1;border:'+bd(false)+';border-radius:.7em;background:'+t.surface+';padding:.8em;display:flex;flex-direction:column;gap:.7em">'
+     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5em">'+k2+'</div>'
+     +'<div style="flex:1;display:flex;align-items:flex-end;gap:.4em">'+b2+'</div></div>';
+  } else {
+    var c2=m.cards.slice(0,2).map(function(c){
+      return '<div style="background:'+t.surface+';border:'+bd(t.light)+';border-radius:.6em;padding:.6em .7em"><div style="font-size:.56em;font-weight:700">'+c.t+'</div><div style="font-size:.5em;color:'+t.mute+';margin-top:.2em">'+c.s+'</div></div>';
+    }).join('');
+    body='<div style="flex:1;min-height:6em;border-radius:.8em;position:relative;overflow:hidden;background:linear-gradient(135deg,'+t.accent+','+t.accent2+');margin-bottom:.8em">'
+     +'<div style="position:absolute;width:7em;height:7em;border-radius:50%;border:1px solid rgba(255,255,255,.3);right:-2em;top:-2em"></div></div>'
+     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.6em">'+c2+'</div>';
+  }
+  return '<div style="display:flex;justify-content:space-between;align-items:center;padding:.7em 1.1em .4em;font-size:.58em;font-weight:600;color:'+t.mute+'"><span>9:41</span><span>●●●</span></div>'
+   +'<div style="display:flex;align-items:center;justify-content:space-between;padding:.5em 1em .7em;border-bottom:'+bd(t.light)+'">'
+   +'<div style="display:flex;align-items:center;gap:.5em"><span style="display:grid;place-items:center;width:1.6em;height:1.6em;border-radius:.4em;background:'+t.accent+';color:'+(t.light?'#fff':t.bg)+';font-weight:800;font-size:.6em">'+m.logo+'</span><span style="font-weight:700;font-size:.72em">'+p.name+'</span></div>'
+   +'<div style="display:flex;flex-direction:column;gap:.22em"><span style="width:1.2em;height:2px;background:'+t.text+';display:block"></span><span style="width:1.2em;height:2px;background:'+t.text+';display:block"></span></div></div>'
+   +'<div style="flex:1;padding:1.1em 1em;display:flex;flex-direction:column">'
+   +'<span style="font-size:.52em;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:'+t.accent+'">'+m.eyebrow+'</span>'
+   +'<div style="font-size:1.45em;font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:.3em 0 .4em">'+m.headline[0]+'<br><span style="color:'+t.accent+'">'+m.headline[1]+'</span></div>'
+   +'<p style="font-size:.62em;line-height:1.5;color:'+t.mute+';margin:0 0 1em">'+m.sub+'</p>'
+   +'<div style="text-align:center;font-size:.66em;font-weight:700;border-radius:99em;padding:.75em;background:'+t.accent+';color:'+(t.light?'#fff':t.bg)+';margin-bottom:1em">'+m.cta+'</div>'
+   +body+'</div>';
+}
+
+function siteMock(p,mobile){
+  var inner = mobile ? mobileMock(p)
+    : (p.mock.variant==="commerce"?commerceMock(p):p.mock.variant==="dashboard"?dashboardMock(p):marketingMock(p));
+  return '<div class="mock'+(mobile?' mobile':'')+'" style="background:'+p.theme.bg+';color:'+p.theme.text+'">'+inner+'</div>';
+}
+
+function browserFrame(p,noShadow){
+  return '<div class="bframe"'+(noShadow?' style="box-shadow:none"':'')+'>'
+   +'<div class="bbar"><span class="bdot" style="background:rgba(255,95,87,.8)"></span><span class="bdot" style="background:rgba(254,188,46,.8)"></span><span class="bdot" style="background:rgba(40,200,64,.8)"></span>'
+   +'<span class="burl">🔒 '+p.domain+'</span><span style="width:40px"></span></div>'
+   +'<div class="bbody">'+siteMock(p,false)+'</div></div>';
+}
+function phoneFrame(p){
+  return '<div class="pframe"><div class="notch"></div><div class="pbody">'+siteMock(p,true)+'</div></div>';
+}
+
+function wireframe(variant){
+  function blk(w,h,o,r){return '<div class="wb" style="width:'+w+';height:'+h+'px;opacity:'+(o||1)+';border-radius:'+(r||4)+'px"></div>'}
+  var navRow='<div style="display:flex;align-items:center;justify-content:space-between">'+blk('18%',8)
+   +'<div style="display:flex;width:40%;gap:6px">'+blk('33%',6)+blk('33%',6)+blk('33%',6)+'</div>'+blk('14%',12,1,99)+'</div>';
+  if(variant==="hero"){
+    return '<div class="wire">'+navRow
+     +'<div style="display:flex;flex:1;gap:8px;padding-top:4px"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px">'
+     +blk('85%',14)+blk('65%',14)+blk('90%',6,.5)+blk('70%',6,.5)
+     +'<div style="display:flex;gap:8px;margin-top:4px">'+blk('30%',14,1,99)+blk('30%',14,.4,99)+'</div></div>'
+     +'<div style="flex:1;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05)"></div></div>'
+     +'<div style="display:flex;gap:8px"><div style="flex:1;height:40px;border-radius:6px;background:rgba(255,255,255,.07)"></div><div style="flex:1;height:40px;border-radius:6px;background:rgba(255,255,255,.07)"></div><div style="flex:1;height:40px;border-radius:6px;background:rgba(255,255,255,.07)"></div></div></div>';
+  }
+  if(variant==="grid"){
+    var cells='';
+    for(var i=0;i<6;i++){cells+='<div style="display:flex;flex-direction:column;gap:6px"><div style="flex:1;border-radius:6px;background:rgba(255,255,255,.07)"></div>'+blk('80%',5)+blk('50%',5,.5)+'</div>'}
+    return '<div class="wire">'+navRow+'<div style="display:grid;flex:1;grid-template-columns:repeat(3,1fr);gap:8px;padding-top:4px">'+cells+'</div></div>';
+  }
+  return '<div class="wire">'+navRow
+   +'<div style="display:flex;flex:1;gap:8px;padding-top:4px"><div style="flex:1.4;display:flex;flex-direction:column;gap:8px">'
+   +'<div style="flex:1;border-radius:8px;background:rgba(255,255,255,.07)"></div>'
+   +'<div style="display:flex;gap:6px"><div style="flex:1;height:24px;border-radius:4px;background:rgba(255,255,255,.1)"></div><div style="flex:1;height:24px;border-radius:4px;background:rgba(255,255,255,.1)"></div><div style="flex:1;height:24px;border-radius:4px;background:rgba(255,255,255,.1)"></div><div style="flex:1;height:24px;border-radius:4px;background:rgba(255,255,255,.1)"></div></div></div>'
+   +'<div style="flex:1;display:flex;flex-direction:column;gap:8px">'+blk('70%',10)+blk('45%',8,.6)+blk('95%',5,.4)+blk('85%',5,.4)+blk('90%',5,.4)
+   +'<div style="margin-top:auto">'+blk('100%',16,1,99)+'</div></div></div></div>';
+}
+
+/* =================================================================
+   HOME CONTENT RENDER
+   ================================================================= */
+var ICONS = {
+  uiux:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/></svg>',
+  dev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13 4l-2 16"/></svg>',
+  bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 3 4 14h6l-1 7 9-11h-6l1-7z"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg>',
+  layout:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18v6H3zM3 15h8v4H3zM15 15h6v4h-6z"/></svg>',
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>',
+  browser:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>',
+  cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7h15l-1.5 9.5a2 2 0 0 1-2 1.5H8a2 2 0 0 1-2-1.7L4.2 4H2"/><circle cx="9.5" cy="21" r="1"/><circle cx="16.5" cy="21" r="1"/></svg>',
+  folio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg>',
+  target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg>',
+  gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19"/></svg>'
+};
+
+var SKILLS=[
+ {t:"UI/UX Design",d:"Interfaces that feel inevitable — researched, structured, and beautiful.",i:"uiux"},
+ {t:"Web Development",d:"Clean, modern code with React and motion systems that run at 60fps.",i:"dev"},
+ {t:"Website Optimization",d:"Performance budgets, Core Web Vitals and SEO baked in from line one.",i:"bolt"},
+ {t:"Mobile Responsive Design",d:"Every breakpoint designed on purpose — not squeezed as an afterthought.",i:"phone"},
+ {t:"Landing Pages",d:"Single-purpose pages engineered for one outcome: conversion.",i:"layout"},
+ {t:"Business Websites",d:"Complete digital homes for brands — story, services, and sales in one.",i:"building"}];
+
+var SERVICES=[
+ {n:"01",t:"Landing Page Design",d:"High-impact single pages built around one goal — turning visitors into leads. Strategy, copy structure, and motion working as one funnel.",tags:["Conversion-first","A/B ready","Fast"],i:"layout"},
+ {n:"02",t:"Business Website Design",d:"Complete multi-page websites that present your brand with authority — services, story, social proof, and a clear path to contact.",tags:["Multi-page","CMS-ready","Brand-led"],i:"browser"},
+ {n:"03",t:"E-Commerce Development",d:"Online stores engineered for buying — frictionless product discovery, fit-confident product pages, and checkouts that don't leak revenue.",tags:["Storefronts","Checkout UX","Payments"],i:"cart"},
+ {n:"04",t:"Portfolio Websites",d:"Personal platforms for creators and professionals that make your work impossible to scroll past — and easy to hire.",tags:["Personal brand","Case studies","Motion"],i:"folio"},
+ {n:"05",t:"Website Redesign",d:"Your existing site, rebuilt to modern standards — sharper design, faster loads, better rankings, and measurably more enquiries.",tags:["Audit-first","Migration","Upgrade"],i:"refresh"},
+ {n:"06",t:"UI/UX Design",d:"Research-backed interface design for apps and products — wireframes to polished design systems your developers will love.",tags:["Wireframes","Design systems","Prototypes"],i:"gear"}];
+
+var WHY=[
+ {t:"Modern Design",d:"Design language drawn from the world's best digital products — never from templates.",i:"star"},
+ {t:"Fast Performance",d:"Sub-2-second loads as a budget, not a hope. Speed is a design feature here.",i:"bolt"},
+ {t:"Mobile Responsive",d:"Designed mobile-first, because that's where your customers already are.",i:"phone"},
+ {t:"SEO Friendly",d:"Semantic structure, clean markup and metadata strategy — built to be found.",i:"search"},
+ {t:"Conversion Focused",d:"Every section has a job. Every page ends one step closer to an enquiry.",i:"target"},
+ {t:"Premium User Experience",d:"Smooth motion, considered details, zero friction — experiences people remember.",i:"heart"}];
+
+var STEPS=[
+ {n:"01",t:"Discovery",d:"We start with your business, not your website — goals, audience, competitors, and what 'success' actually means in numbers."},
+ {n:"02",t:"Research",d:"Market and user research that shapes every decision: what your customers expect, where competitors fall short, and where you can win."},
+ {n:"03",t:"Wireframing",d:"Low-fidelity blueprints lock the strategy — page structure, user flows, and conversion paths — before a single pixel is styled."},
+ {n:"04",t:"UI Design",d:"The visual layer: typography, colour, motion, and a design system that makes your brand feel unmistakably premium."},
+ {n:"05",t:"Development",d:"Hand-coded with modern tooling — fast, responsive, accessible, and animated at a buttery 60fps."},
+ {n:"06",t:"Launch",d:"Performance tuning, SEO checks, analytics wiring — then we go live. And I stay around to make sure it keeps performing."}];
+
+function getP(slug){for(var i=0;i<PROJECTS.length;i++){if(PROJECTS[i].slug===slug)return PROJECTS[i]}return null}
+function nextP(slug){var i=PROJECTS.findIndex(function(p){return p.slug===slug});return PROJECTS[(i+1)%PROJECTS.length]}
+
+function footerHTML(){
+  return '<footer><div class="aurora"><div class="blob" style="width:60vw;height:40vw;left:20%;bottom:-40%;background:rgba(124,92,255,.12)"></div></div>'
+  +'<div class="wrap" style="position:relative;padding-top:80px"><div class="fgrid">'
+  +'<div><p style="font-family:var(--disp);font-size:24px;font-weight:700">Build<span class="text-grad">ByTejas</span> <span style="color:var(--cyan)">✦</span></p>'
+  +'<p style="margin-top:16px;max-width:300px;font-size:14px;line-height:1.7;color:var(--mist)">Building premium digital experiences that convert. Designed and developed by Tejas Rathi.</p>'
+  +'<p style="margin-top:24px;font-size:12px;color:rgba(163,163,184,.7)">All showcased projects are self-initiated concept work created to demonstrate design and development capability.</p></div>'
+  +'<div><p class="fhead">Navigate</p><a class="flink nav-go" href="#work">Work</a><a class="flink nav-go" href="#about">About</a><a class="flink nav-go" href="#services">Services</a><a class="flink nav-go" href="#process">Process</a><a class="flink nav-go" href="#contact">Contact</a></div>'
+  +'<div><p class="fhead">Connect</p><a class="flink" href="mailto:rathitejas975@gmail.com">rathitejas975@gmail.com</a>'
+  +'<a class="flink" href="https://www.instagram.com/buildbytejass" target="_blank" rel="noreferrer">Instagram — @buildbytejass</a>'
+  +'<a href="#contact" class="btn btn-ghost nav-go magnetic" style="margin-top:16px;padding:12px 24px;font-size:14px">Start a Project ↗</a></div>'
+  +'</div><div class="wordmark text-outline" aria-hidden="true">BUILDBYTEJAS</div>'
+  +'<div class="fbottom"><p>© '+new Date().getFullYear()+' BuildByTejas · Tejas Rathi. All rights reserved.</p>'
+  +'<button id="' + 'topBtn' + Math.random().toString(36).slice(2,6) + '" class="totop" style="color:var(--mist);font-size:12px">Back to top ↑</button></div></div></footer>';
+}
+
+function renderHome(){
+  document.getElementById('disclaimer').textContent = DISCLAIMER + " Every brand below is fictional — every design decision, pixel and line of code is real.";
+
+  document.getElementById('skillCards').innerHTML = SKILLS.map(function(s,i){
+    return '<div class="glass card" data-reveal data-d="'+(i%3)*80+'"><div class="ichip">'+ICONS[s.i]+'</div>'
+     +'<h3 style="font-family:var(--disp);font-size:18px;font-weight:600">'+s.t+'</h3>'
+     +'<p style="margin-top:8px;font-size:14px;line-height:1.65;color:var(--mist)">'+s.d+'</p></div>';
+  }).join('');
+
+  document.getElementById('serviceCards').innerHTML = SERVICES.map(function(s,i){
+    return '<div class="glass card tilt" style="position:relative;overflow:hidden" data-reveal data-d="'+(i%3)*80+'">'
+     +'<span class="cardnum">'+s.n+'</span><div class="ichip">'+ICONS[s.i]+'</div>'
+     +'<h3 style="font-family:var(--disp);font-size:20px;font-weight:600">'+s.t+'</h3>'
+     +'<p style="margin-top:12px;font-size:14px;line-height:1.65;color:var(--mist)">'+s.d+'</p>'
+     +'<div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">'+s.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>';
+  }).join('');
+
+  document.getElementById('whyCards').innerHTML = WHY.map(function(s,i){
+    return '<div class="glass card tilt" data-reveal data-d="'+(i%3)*80+'"><div class="icircle">'+ICONS[s.i]+'</div>'
+     +'<h3 style="font-family:var(--disp);font-size:18px;font-weight:600">'+s.t+'</h3>'
+     +'<p style="margin-top:8px;font-size:14px;line-height:1.65;color:var(--mist)">'+s.d+'</p></div>';
+  }).join('');
+
+  document.getElementById('workGrid').innerHTML = PROJECTS.map(function(p,i){
+    return '<div data-reveal data-d="'+(i%2)*100+'"><a class="wcard glass card tilt" data-cursor="View" href="#/work/'+p.slug+'" aria-label="View '+p.name+' case study" style="display:block;border-radius:24px;padding:22px">'
+     +'<div class="whead"><span class="badge">Concept Project</span><span style="font-size:12px;color:var(--mist)">'+p.industry+'</span></div>'
+     +'<div class="frame-wrap" data-clip>'+browserFrame(p,true)+'</div>'
+     +'<div class="wfoot"><div><h3>'+p.name+'</h3><p class="wtagline">'+p.tagline+'</p>'
+     +'<div class="wtags">'+p.services.slice(0,3).map(function(s){return '<span class="tag">'+s+'</span>'}).join('')+'</div></div>'
+     +'<span class="warr">↗</span></div></a></div>';
+  }).join('');
+
+  document.getElementById('stepsWrap').innerHTML = STEPS.map(function(s){
+    return '<div class="step"><span class="node"></span><div class="scontent">'
+     +'<span class="snum text-grad">'+s.n+'</span><h3>'+s.t+'</h3><p>'+s.d+'</p></div></div>';
+  }).join('');
+
+  var mq=function(items){return items.map(function(t){return '<span class="mi"><span>'+t+'</span><span class="star">✦</span></span>'}).join('')};
+  var m1=mq(["Web Design","Development","UI/UX","E-Commerce","Landing Pages","Branding","SEO","Motion"]);
+  var m2=mq(["Strategy","Design","Code","Launch","Grow","Strategy","Design","Code","Launch","Grow"]);
+  document.getElementById('mq1').innerHTML='<div class="mi" style="display:contents">'+m1+m1+'</div>';
+  document.getElementById('mq2').innerHTML='<div class="mi" style="display:contents">'+m2+m2+'</div>';
+
+  document.getElementById('heroMockA').innerHTML = browserFrame(getP('taskflow-ai'))
+   +'<span class="badge" style="position:absolute;top:-12px;left:16px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px)">Concept Project</span>';
+  document.getElementById('heroMockB').innerHTML = browserFrame(getP('shreeji-properties'));
+
+  document.getElementById('footerHome').innerHTML = footerHTML();
+
+  var types=["Landing Page","Business Website","E-Commerce Store","Portfolio Website","Website Redesign","UI/UX Design"];
+  document.getElementById('fTypes').innerHTML = types.map(function(t,i){
+    return '<button type="button" class="ptype'+(i===0?' sel':'')+'" data-type="'+t+'">'+t+'</button>';
+  }).join('');
+}
+
+/* =================================================================
+   CASE STUDY RENDER (hash route #/work/slug)
+   ================================================================= */
+function caseHTML(p){
+  var t=p.theme, nx=nextP(p.slug);
+  function head(idx,title,sub){
+    return '<p class="eyebrow" data-reveal>'+idx+' — '+title+'</p>'+(sub?'<h2 class="cs-sub" data-words>'+sub+'</h2>':'');
+  }
+  return ''
+  +'<section class="cs-hero"><div class="aurora">'
+  +'<div class="blob" style="width:50vw;height:50vw;left:-10%;top:-15%;background:'+t.accent+'30"></div>'
+  +'<div class="blob" style="width:38vw;height:38vw;right:-12%;bottom:0;background:'+t.accent2+'25"></div></div>'
+  +'<div class="wrap" style="position:relative;z-index:10">'
+  +'<div data-reveal style="margin-bottom:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px"><span class="badge">Concept Project</span><span style="font-size:14px;color:var(--mist)">'+p.industry+' · '+p.year+'</span></div>'
+  +'<h1 data-words>'+p.name+'</h1>'
+  +'<p data-reveal data-d="300" style="margin-top:24px;max-width:560px;font-size:clamp(17px,1.6vw,20px);color:var(--mist)">'+p.tagline+'</p>'
+  +'<div data-reveal data-d="400" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:8px">'+p.services.map(function(s){return '<span class="tag">'+s+'</span>'}).join('')+'</div></div>'
+  +'<div class="wrap" style="margin-top:56px"><div data-clip style="max-width:960px;margin-inline:auto">'+browserFrame(p)+'</div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("02","Project Overview","")
+  +'<div style="display:grid;gap:48px;grid-template-columns:1.4fr 1fr" class="csgrid">'
+  +'<div data-reveal><p style="font-size:clamp(19px,1.9vw,24px);line-height:1.6;color:rgba(255,255,255,.85)">'+p.overview+'</p>'
+  +'<p style="margin-top:32px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:16px;padding:20px;font-size:14px;line-height:1.7;color:var(--mist)">✦ '+DISCLAIMER+'</p></div>'
+  +'<div class="glass meta-card" style="border-radius:16px;padding:28px;height:fit-content" data-reveal data-d="150">'
+  +'<div><span class="mist">Industry</span><b>'+p.industry+'</b></div>'
+  +'<div><span class="mist">Year</span><b>'+p.year+'</b></div>'
+  +'<div><span class="mist">Type</span><b>Concept Project</b></div>'
+  +'<div><span class="mist">Role</span><b style="text-align:right">Design &amp; Development — Tejas Rathi</b></div></div></div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("03","The Business Challenge","Every premium build starts with a problem worth solving.")
+  +'<div class="quote-rail" data-reveal style="margin-top:48px"><style>.qr'+p.slug.replace(/-/g,'')+'::before{background:linear-gradient(180deg,'+t.accent+',transparent)}</style>'
+  +'<span style="position:absolute;left:0;top:0;height:100%;width:3px;border-radius:3px;background:linear-gradient(180deg,'+t.accent+',transparent)"></span>'
+  +'<p style="font-size:clamp(17px,1.7vw,21px);line-height:1.7;color:rgba(255,255,255,.8)">'+p.challenge+'</p></div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("04","Research Process","Decisions backed by evidence, not aesthetics alone.")
+  +'<div class="grid2" style="margin-top:48px">'+p.research.map(function(r,i){
+    return '<div class="glass card" data-reveal data-d="'+(i%2)*100+'"><span class="text-grad" style="font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.3em">R'+(i+1)+'</span>'
+     +'<p style="margin-top:16px;font-size:14px;line-height:1.7;color:rgba(255,255,255,.75)">'+r+'</p></div>';
+  }).join('')+'</div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("05","Wireframes","Structure first — strategy locked before styling begins.")
+  +'<p data-reveal style="margin:40px 0;max-width:640px;color:var(--mist)">'+p.wireNote+'</p>'
+  +'<div class="grid3">'
+  +'<div data-reveal>'+wireframe("hero")+'<p style="margin-top:12px;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)">Homepage frame</p></div>'
+  +'<div data-reveal data-d="100">'+wireframe("grid")+'<p style="margin-top:12px;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)">Listing frame</p></div>'
+  +'<div data-reveal data-d="200">'+wireframe("detail")+'<p style="margin-top:12px;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)">Detail frame</p></div>'
+  +'</div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("06","Design System","A visual language built to scale beyond one page.")
+  +'<div style="display:grid;gap:40px;grid-template-columns:1.3fr 1fr;margin-top:48px" class="csgrid">'
+  +'<div><p class="fhead" data-reveal>Colour palette</p><div class="sw-grid">'+p.colors.map(function(c,i){
+    return '<div data-reveal data-d="'+i*60+'"><div class="swatch" style="background:'+c.hex+'"></div>'
+     +'<p style="margin-top:12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85)">'+c.name+'</p>'
+     +'<p style="font-size:11px;text-transform:uppercase;color:var(--mist)">'+c.hex+'</p></div>';
+  }).join('')+'</div>'
+  +'<p data-reveal data-d="200" style="margin-top:40px;max-width:580px;font-size:14px;line-height:1.7;color:var(--mist)">'+p.dsNote+'</p></div>'
+  +'<div class="glass" style="border-radius:16px;padding:28px;height:fit-content" data-reveal data-d="150"><p class="fhead">Typography</p>'
+  +p.fonts.map(function(f,i){
+    return '<div style="'+(i?'margin-top:32px;border-top:1px solid var(--line);padding-top:32px':'')+'">'
+     +'<p style="font-family:var(--disp);font-size:40px;font-weight:700;color:'+t.accent+'">Aa</p>'
+     +'<p style="margin-top:8px;font-family:var(--disp);font-size:18px;font-weight:600">'+f.name+'</p>'
+     +'<p style="margin-top:4px;font-size:12px;color:var(--mist)">'+f.usage+'</p></div>';
+  }).join('')+'</div></div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("07","Desktop Designs","The full-width experience, frame by frame.")
+  +'<div data-clip style="margin-top:48px" class="tilt">'+browserFrame(p)+'</div>'
+  +'<p data-reveal style="margin-top:20px;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)">Homepage — concept design rendered live</p></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("08","Mobile Designs","Designed thumb-first, where customers actually browse.")
+  +'<div class="phones" style="margin-top:56px">'
+  +'<div data-reveal>'+phoneFrame(p)+'</div><div data-reveal data-d="120">'+phoneFrame(p)+'</div><div data-reveal data-d="240">'+phoneFrame(p)+'</div>'
+  +'</div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("09","Interactive Features","The details that turn visitors into customers.")
+  +'<div class="grid2" style="margin-top:48px">'+p.features.map(function(f,i){
+    return '<div class="glass card tilt" data-reveal data-d="'+(i%2)*100+'" style="padding:32px">'
+     +'<span class="fchip" style="background:'+t.accent+'1f;color:'+t.accent+'">0'+(i+1)+'</span>'
+     +'<h3 style="font-family:var(--disp);font-size:20px;font-weight:600">'+f.title+'</h3>'
+     +'<p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--mist)">'+f.desc+'</p></div>';
+  }).join('')+'</div></div></section>'
+
+  +'<section class="cs-section"><div class="wrap">'+head("10","Final Showcase","Concept targets the build was engineered against.")
+  +'<div class="grid3" style="margin-top:48px">'+p.metrics.map(function(m,i){
+    return '<div class="glass card metric" data-reveal data-d="'+i*100+'"><b class="text-grad"><span data-count="'+m.v+'">0</span>'+m.suffix+'</b><p>'+m.l+'</p></div>';
+  }).join('')+'</div>'
+  +'<p data-reveal data-d="200" style="margin:56px auto 0;max-width:640px;text-align:center;font-size:18px;line-height:1.7;color:rgba(255,255,255,.8)">'+p.outcome+'</p>'
+  +'<div style="margin-top:64px;display:grid;gap:32px;grid-template-columns:1.5fr 1fr;align-items:center" class="csgrid">'
+  +'<div data-clip>'+browserFrame(p)+'</div>'
+  +'<div data-reveal data-d="150" style="max-width:200px;margin-inline:auto;width:100%">'+phoneFrame(p)+'</div></div></div></section>'
+
+  +'<section class="cs-section" style="overflow:hidden"><div class="aurora">'
+  +'<div class="blob" style="width:40vw;height:40vw;left:15%;top:10%;background:rgba(124,92,255,.18)"></div>'
+  +'<div class="blob" style="width:32vw;height:32vw;right:10%;bottom:-15%;background:rgba(34,211,238,.12)"></div></div>'
+  +'<div class="wrap" style="position:relative;text-align:center">'
+  +'<p class="eyebrow" data-reveal style="justify-content:center">Want results like this?</p>'
+  +'<h2 data-words data-accent="next" style="margin:32px auto 0;max-width:760px;font-family:var(--disp);font-size:clamp(34px,5.5vw,68px);font-weight:700;letter-spacing:-.02em;line-height:1.06">Your business could be the next case study.</h2>'
+  +'<div data-reveal data-d="250" style="margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px">'
+  +'<a href="#contact" class="btn btn-primary magnetic nav-go">Start a Project ↗</a>'
+  +'<a href="#/work/'+nx.slug+'" class="btn btn-ghost magnetic">Next: '+nx.name+' →</a>'
+  +'</div></div></section>'
+  + footerHTML();
+}
+
+/* =================================================================
+   ROUTER
+   ================================================================= */
+var pendingScroll=null;
+function route(){
+  var h=location.hash;
+  if(h.indexOf('#/work/')===0){
+    var p=getP(h.slice(7));
+    if(p){
+      document.title=p.name+" — Concept Case Study | BuildByTejas";
+      document.body.classList.add('case');
+      var cp=document.getElementById('casePage');
+      cp.innerHTML=caseHTML(p);
+      window.scrollTo(0,0);
+      initDynamic(cp);
+      return;
+    }
+  }
+  document.title="BuildByTejas — Premium Web Design & Development | Tejas Rathi";
+  document.body.classList.remove('case');
+  document.getElementById('casePage').innerHTML='';
+  if(window.__sceneRefresh)window.__sceneRefresh();
+  if(pendingScroll){
+    var target=pendingScroll;pendingScroll=null;
+    // wait out the browser's own scroll-to-top from the hash clearing,
+    // otherwise it cancels this smooth scroll
+    setTimeout(function(){
+      var el=document.querySelector(target);
+      if(el)el.scrollIntoView({behavior:'smooth'});
+    },350);
+  }
+}
+window.addEventListener('hashchange',route);
+
+// nav links: if on a case page, go home first then scroll to section
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a.nav-go');
+  if(!a)return;
+  var id=a.getAttribute('href');
+  if(id&&id.charAt(0)==='#'&&id.indexOf('#/')!==0){
+    e.preventDefault();
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('burger').classList.remove('open');
+    if(document.body.classList.contains('case')){
+      pendingScroll=id;
+      location.hash='';
+    } else {
+      var el=document.querySelector(id);
+      if(el)el.scrollIntoView({behavior:'smooth'});
+      history.replaceState(null,'',id);
+    }
+  }
+});
+
+/* =================================================================
+   ANIMATION ENGINE
+   ================================================================= */
+var io,cio;
+function setupObservers(){
+  io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var d=parseInt(en.target.getAttribute('data-d')||'0',10);
+        setTimeout(function(){en.target.classList.add('in')},d);
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'-60px 0px'});
+  cio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){animateCount(en.target);cio.unobserve(en.target)}
+    });
+  },{rootMargin:'-40px 0px'});
+}
+function animateCount(el){
+  var to=parseFloat(el.getAttribute('data-count')),start=null,dur=2000;
+  function tick(ts){
+    if(!start)start=ts;
+    var p=Math.min(1,(ts-start)/dur),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*to);
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+function splitWords(el){
+  var accent=(el.getAttribute('data-accent')||'').split(' ').filter(Boolean);
+  var words=el.textContent.trim().split(/\s+/);
+  el.setAttribute('aria-label',el.textContent.trim());
+  el.innerHTML=words.map(function(w,i){
+    var isA=accent.indexOf(w)>=0||accent.indexOf(w.replace(/[.,]/g,''))>=0;
+    return '<span class="wmask" data-wi="'+i+'"><span'+(isA?' class="serif text-grad"':'')+'>'+w+(i<words.length-1?'&nbsp;':'')+'</span></span>';
+  }).join('');
+  var wio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var masks=en.target.querySelectorAll('.wmask');
+        masks.forEach(function(m,i){setTimeout(function(){m.classList.add('in')},i*60)});
+        wio.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'-60px 0px'});
+  wio.observe(el);
+}
+function initTilt(scope){
+  scope.querySelectorAll('.tilt').forEach(function(el){
+    var max=6;
+    el.addEventListener('mousemove',function(e){
+      var r=el.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      el.style.transform='perspective(900px) rotateX('+(-py*max)+'deg) rotateY('+(px*max)+'deg)';
+    });
+    el.addEventListener('mouseleave',function(){el.style.transform=''});
+  });
+}
+function initMagnetic(scope){
+  scope.querySelectorAll('.magnetic').forEach(function(el){
+    el.addEventListener('mousemove',function(e){
+      var r=el.getBoundingClientRect();
+      var x=(e.clientX-(r.left+r.width/2))*.3, y=(e.clientY-(r.top+r.height/2))*.3;
+      el.style.transform='translate('+x+'px,'+y+'px)';
+    });
+    el.addEventListener('mouseleave',function(){el.style.transform=''});
+  });
+}
+function initDynamic(scope){
+  scope.querySelectorAll('[data-reveal],[data-clip]').forEach(function(el){io.observe(el)});
+  scope.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+  scope.querySelectorAll('[data-words]').forEach(splitWords);
+  initTilt(scope);initMagnetic(scope);
+  scope.querySelectorAll('.totop').forEach(function(b){b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})});
+}
+
+/* cursor */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches)return;
+  var dot=document.getElementById('cdot'),ring=document.getElementById('cring'),txt=document.getElementById('ctext');
+  var px=-100,py=-100,rx=-100,ry=-100;
+  window.addEventListener('mousemove',function(e){px=e.clientX;py=e.clientY},{passive:true});
+  document.addEventListener('mouseover',function(e){
+    var lbl=e.target.closest&&e.target.closest('[data-cursor]');
+    var act=e.target.closest&&e.target.closest('a,button,[data-hover]');
+    ring.classList.toggle('label',!!lbl);
+    ring.classList.toggle('active',!!act&&!lbl);
+    txt.textContent=lbl?lbl.getAttribute('data-cursor'):'';
+  },{passive:true});
+  (function loop(){
+    rx+=(px-rx)*.16;ry+=(py-ry)*.16;
+    dot.style.transform='translate('+(px-3)+'px,'+(py-3)+'px)';
+    var half=ring.offsetWidth/2;
+    ring.style.transform='translate('+(rx-half)+'px,'+(ry-half)+'px)';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* scroll-driven: progress bar, nav state, floating CTA, timeline fill */
+(function(){
+  var prog=document.getElementById('progress'),nav=document.getElementById('nav'),cta=document.getElementById('floatCta');
+  function onScroll(){
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.transform='scaleX('+(max>0?window.scrollY/max:0)+')';
+    nav.classList.toggle('scrolled',window.scrollY>40);
+    cta.classList.toggle('show',window.scrollY>window.innerHeight*.9);
+    var tl=document.getElementById('timeline');
+    if(tl&&!document.body.classList.contains('case')){
+      var r=tl.getBoundingClientRect();
+      var p=Math.min(1,Math.max(0,(window.innerHeight*.7-r.top)/(r.height)));
+      document.getElementById('spineFill').style.transform='scaleY('+p+')';
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+
+/* mobile menu */
+document.getElementById('burger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+/* contact form -> mailto */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var sel=document.querySelector('.ptype.sel');
+  var type=sel?sel.getAttribute('data-type'):'Website';
+  var name=document.getElementById('fName').value,email=document.getElementById('fEmail').value,msg=document.getElementById('fMsg').value;
+  var subject=encodeURIComponent('New '+type+' enquiry — '+(name||'Website visitor'));
+  var body=encodeURIComponent('Hi Tejas,\n\nName: '+name+'\nEmail: '+email+'\nProject type: '+type+'\n\n'+msg+'\n\n— Sent from buildbytejas');
+  window.location.href='mailto:rathitejas975@gmail.com?subject='+subject+'&body='+body;
+  document.getElementById('fSubmit').firstChild.textContent='Opening your email app… ';
+  document.getElementById('fNote').style.display='block';
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.ptype');
+  if(!b)return;
+  document.querySelectorAll('.ptype').forEach(function(x){x.classList.remove('sel')});
+  b.classList.add('sel');
+});
+
+/* =================================================================
+   CANVAS HERO — particles + 3D wireframe icosahedron + orbs
+   ================================================================= */
+(function(){
+  var cv=document.getElementById('scene');
+  if(!cv||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var cx=cv.getContext('2d'),W,H,DPR=Math.min(1.6,window.devicePixelRatio||1);
+  var mx=0,my=0;
+  function resize(){
+    W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  window.addEventListener('resize',resize);resize();
+  window.addEventListener('mousemove',function(e){
+    mx=(e.clientX/window.innerWidth-.5)*2;my=(e.clientY/window.innerHeight-.5)*2;
+  },{passive:true});
+
+  // particles + glowing orbs (rebuilt if the page booted on a case route,
+  // where the hidden home canvas measures 0x0)
+  var P=[],orbs=[];
+  function build(){
+    P=[];orbs=[];
+    var N=Math.min(220,Math.floor(W*H/9000));
+    for(var i=0;i<N;i++){
+      P.push({x:Math.random()*1.2-.1,y:Math.random()*1.2-.1,z:.2+Math.random()*.8,s:.5+Math.random()*1.6,vx:(Math.random()-.5)*.00006,vy:(Math.random()-.5)*.00005,tw:Math.random()*6.28});
+    }
+    for(var j=0;j<6;j++){
+      orbs.push({x:.1+Math.random()*.8,y:.15+Math.random()*.7,r:2+Math.random()*3,sp:.4+Math.random()*.6,off:j*1.7,c:j%2?'34,211,238':'167,139,250'});
+    }
+  }
+  build();
+  window.__sceneRefresh=function(){resize();if(!P.length)build()};
+  // icosahedron
+  var phi=(1+Math.sqrt(5))/2, V=[[-1,phi,0],[1,phi,0],[-1,-phi,0],[1,-phi,0],[0,-1,phi],[0,1,phi],[0,-1,-phi],[0,1,-phi],[phi,0,-1],[phi,0,1],[-phi,0,-1],[-phi,0,1]];
+  var E=[];
+  for(var a=0;a<12;a++){for(var b2=a+1;b2<12;b2++){
+    var dx=V[a][0]-V[b2][0],dy=V[a][1]-V[b2][1],dz=V[a][2]-V[b2][2];
+    if(Math.abs(Math.sqrt(dx*dx+dy*dy+dz*dz)-2)<.01)E.push([a,b2]);
+  }}
+  function project(v,rx,ry,cxp,cyp,scale){
+    var x=v[0],y=v[1],z=v[2];
+    var c=Math.cos(ry),s=Math.sin(ry),x1=x*c-z*s,z1=x*s+z*c;
+    c=Math.cos(rx);s=Math.sin(rx);
+    var y1=y*c-z1*s,z2=y*s+z1*c;
+    var pers=4/(4+z2);
+    return [cxp+x1*scale*pers,cyp+y1*scale*pers];
+  }
+  var t0=performance.now();
+  (function draw(now){
+    var t=(now-t0)/1000;
+    cx.clearRect(0,0,W,H);
+    // particles
+    for(var i=0;i<P.length;i++){
+      var p=P[i];
+      p.x+=p.vx+0.00001;p.y+=p.vy;
+      if(p.x>1.1)p.x=-.1;if(p.x<-.1)p.x=1.1;if(p.y>1.1)p.y=-.1;if(p.y<-.1)p.y=1.1;
+      var ox=mx*14*p.z,oy=my*10*p.z;
+      var al=.18+.4*p.z*(0.6+0.4*Math.sin(t*1.2+p.tw));
+      cx.beginPath();
+      cx.arc(p.x*W+ox,p.y*H+oy,p.s*p.z,0,6.28);
+      cx.fillStyle='rgba(139,123,255,'+al.toFixed(3)+')';
+      cx.fill();
+    }
+    // orbs
+    for(var j=0;j<orbs.length;j++){
+      var o=orbs[j];
+      var oyy=o.y*H+Math.sin(t*o.sp+o.off)*22+my*16;
+      var oxx=o.x*W+mx*22;
+      var g=cx.createRadialGradient(oxx,oyy,0,oxx,oyy,o.r*6);
+      g.addColorStop(0,'rgba('+o.c+',.8)');g.addColorStop(1,'rgba('+o.c+',0)');
+      cx.fillStyle=g;cx.beginPath();cx.arc(oxx,oyy,o.r*6,0,6.28);cx.fill();
+      cx.fillStyle='rgba('+o.c+',.9)';cx.beginPath();cx.arc(oxx,oyy,o.r*.8,0,6.28);cx.fill();
+    }
+    // icosahedron right side
+    var cxp=W*.78+mx*24, cyp=H*.42+my*18, scale=Math.min(W,H)*.16;
+    cx.strokeStyle='rgba(124,92,255,.16)';cx.lineWidth=1;
+    cx.beginPath();
+    for(var e2=0;e2<E.length;e2++){
+      var p1=project(V[E[e2][0]],t*.12,t*.18,cxp,cyp,scale);
+      var p2=project(V[E[e2][1]],t*.12,t*.18,cxp,cyp,scale);
+      cx.moveTo(p1[0],p1[1]);cx.lineTo(p2[0],p2[1]);
+    }
+    cx.stroke();
+    // thin ring lower-left
+    cx.save();
+    cx.translate(W*.16+mx*10,H*.72+my*8);
+    cx.rotate(.4+t*.1);cx.scale(1,.32);
+    cx.beginPath();cx.arc(0,0,Math.min(W,H)*.13,0,6.28);
+    cx.strokeStyle='rgba(34,211,238,.3)';cx.stroke();
+    cx.restore();
+    requestAnimationFrame(draw);
+  })(t0);
+})();
+
+/* preloader */
+(function(){
+  var pl=document.getElementById('preloader');
+  if(sessionStorage.getItem('bbt-html-visited')){pl.style.display='none';return}
+  document.documentElement.style.overflow='hidden';
+  var num=document.getElementById('plNum'),fill=document.getElementById('plFill');
+  var start=performance.now(),dur=2000;
+  (function tick(now){
+    var p=Math.min(1,(now-start)/dur),e=1-Math.pow(1-p,3);
+    var v=Math.round(e*100);
+    num.textContent=v;fill.style.width=v+'%';
+    if(p<1)requestAnimationFrame(tick);
+    else setTimeout(function(){
+      pl.classList.add('done');
+      document.documentElement.style.overflow='';
+      sessionStorage.setItem('bbt-html-visited','1');
+      setTimeout(function(){pl.style.display='none'},1000);
+    },450);
+  })(start);
+})();
+
+/* boot */
+setupObservers();
+renderHome();
+initDynamic(document.getElementById('homePage'));
+route();
+</script>
+</body>
+</html>
